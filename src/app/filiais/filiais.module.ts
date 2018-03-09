@@ -10,6 +10,9 @@ import { FiliaisComponent } from './filiais.component';
     CommonModule,
     FiliaisRoutingModule
   ],
+  exports:[
+    FiliaisComponent
+  ],
   declarations: [FiliaisComponent],
   providers:[FiliaisService]
 })
