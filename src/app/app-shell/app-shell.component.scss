@@ -3,7 +3,12 @@
     border-bottom: 1px solid #F8F8FF;
     box-shadow: 1px 1px 1px 1px #888888; 
 }
-.brand-logo{}
+.brand-logo{
+    margin: 0 auto;
+}
+a {
+ cursor: pointer;
+}
 td, th {
     vertical-align: middle !important;
     }

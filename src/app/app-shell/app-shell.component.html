@@ -1,13 +1,15 @@
 <nav class="navbar navbar-light">
-    <button class="navbar-toggle" type="text" (click)="display = true" pButton icon="fa-external-link-square"></button>
     <a class="navbar-brand brand-logo" href="#">
         <img src="../../assets/logo-unigex.png" width="150" height="auto" class="d-inline-block  align-top" alt="WebGex">
     </a>
+    <button *ngIf="show" class="navbar-toggle" type="text" (click)="display = true" pButton icon="fa-user"></button>
     <p-sidebar [(visible)]="display">
-        Content
+        <h1>Opções</h1>
+        <a (click)="logout()">
+            <i class="fa fa-sign-out"></i>Logout</a>
     </p-sidebar>
 </nav>
-<div class="left">
+<div *ngIf="show" class="left">
     <div class="item">
         <i class="fa fa-home"></i>
         Filiais
@@ -21,7 +23,4 @@
     <div class="item">
         <i class="fa fa-users"></i>
         Empregados</div>
-</div>
-<div class="right">
-    <h1>olar</h1>
 </div>
