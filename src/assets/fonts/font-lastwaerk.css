@@ -1,0 +1,10 @@
+/* @font-face kit by Fonts2u (http://www.fonts2u.com) */
+@font-face {
+  font-family: "Lastwaerk";
+  src: url("Lastwaerk_regular.eot?") format("eot"),
+    url("Lastwaerk_regular.woff") format("woff"),
+    url("Lastwaerk_regular.ttf") format("truetype"),
+    url("Lastwaerk_regular.svg#Lastwaerkregular") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
