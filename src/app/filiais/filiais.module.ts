@@ -1,9 +1,11 @@
+import { NewFilialComponent } from './new-filial.component';
 import { SharedModule } from './../shared/shared.module';
 import { FiliaisService } from './filiais.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FiliaisRoutingModule } from './filiais-routing.module';
 import { FiliaisComponent } from './filiais.component';
+
 
 @NgModule({
   imports: [
@@ -14,7 +16,7 @@ import { FiliaisComponent } from './filiais.component';
   exports:[
     FiliaisComponent
   ],
-  declarations: [FiliaisComponent],
+  declarations: [FiliaisComponent, NewFilialComponent],
   providers:[FiliaisService]
 })
 export class FiliaisModule { }
