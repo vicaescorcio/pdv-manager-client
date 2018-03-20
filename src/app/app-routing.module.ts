@@ -7,9 +7,8 @@ import { Routes, RouterModule } from '@angular/router';
 
 const routes: Routes = [
   { path: '', component: FiliaisComponent, canActivate: [CanActivateViaAuthGuard] },
-  { path: 'login', component: AuthComponent },
+  { path: 'login', component: AuthComponent }
   // otherwise redirect to home
-  { path: '**', redirectTo: '' }
 ];
 
 @NgModule({

@@ -29,21 +29,13 @@ th {
   font-weight: 800;
 }
 
-.right {
-  background: #fff;
-  width: 60%;
-  transition: width 1s;
-  border-style: solid;
-  border-color: #ccc;
-  border-width: 1px;
-}
 
 .left:hover {
   width: 250px;
 }
 
 .item:hover {
-  background-color: #ccc;
+  background-color: rgb(26, 100, 39);
 }
 
 .left .fa {
@@ -52,63 +44,9 @@ th {
   color: #fff;
 }
 
-.right .fa {
-  color: #a9a9a9;
-}
-i.fa.fa-refresh {
-  font-size: 17px;
-  vertical-align: middle !important;
-}
-
 .item {
   height: 50px;
   overflow: hidden;
   color: #fff;
   cursor: pointer;
-}
-.title {
-  background-color: #eee;
-  border-style: solid;
-  border-color: #ccc;
-  border-width: 1px;
-  box-sizing: border-box;
-}
-.search:hover {
-  border-color: #4aa9fb;
-  border-width: 1px;
-}
-.search {
-  padding: 3px 8px 3px !important;
-}
-input[type="search"] {
-  padding: 10px 0px 10px;
-  border: 0px solid #fff;
-  background: #eee;
-  -webkit-appearance: none;
-  width: 90%;
-  float: none;
-}
-input[type="search"]:focus {
-  outline: none;
-}
-.type {
-  height: 47px;
-}
-.date {
-  background-color: #f7f7f7;
-}
-.docdate {
-  vertical-align: bottom !important;
-}
-.distr {
-  margin: 0 0 5px;
-  font-size: 12px;
-}
-.ndoc {
-  margin: 0 0 5px;
-}
-.storage {
-  margin: 0;
-  color: #aaa !important;
-  font-size: 12px;
 }
