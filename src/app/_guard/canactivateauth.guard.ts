@@ -8,7 +8,8 @@ export class CanActivateViaAuthGuard implements CanActivate {
   constructor(private router:Router, private authService: AuthService) {}
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    if( this.authService.isLoggedIn()){
+    if(this.authService.isLoggedIn()){
+      console.log("logged!")
       return true;
     }
     this.router.navigate(['/login'], { queryParams: { returnUrl: state.url }});
