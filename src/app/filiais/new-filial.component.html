@@ -1,12 +1,109 @@
-<form>
+<div class="alert alert-success" role="alert" *ngIf="sucesso">
+  Formulário enviado com sucesso!
+  <br />
+  {{debug()}}
+</div>
+<form *ngIf="!sucesso" (ngSubmit)="enviar()">
   <div class="form-row">
     <div class="form-group col-md-4">
-      <label for="inputEmail4">Email</label>
-      <input type="email" class="form-control" id="inputEmail4" placeholder="Email">
+      <label for="inputCc_fil">Código Filial:</label>
+      <input type="text" class="form-control" id="cc_fil" placeholder="código"
+       [(ngModel)]="filial.cc_fil" name="cc_fil">
     </div>
     <div class="form-group col-md-4">
-      <label for="inputPassword4">Password</label>
-      <input type="password" class="form-control" id="inputPassword4" placeholder="Password">
+      <label for="inputNm_fil">Nome Filial:</label>
+      <input type="text" class="form-control" id="nm_fil" placeholder="nome"
+      name="nm_fil" [(ngModel)]="filial.nm_fil">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputCc_ins_fed">CNPJ da Filial:</label>
+      <input type="text" class="form-control" id="cc_ins_fed" placeholder="CNPJ"
+      name="cc_ins_fed" [(ngModel)]="filial.cc_ins_fed">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputCc_reg_tri">Regime Tributário:</label>
+        <select name="cc_reg_tri" id="cc_reg_tri" class="form-control"
+				[(ngModel)]="filial.cc_reg_tri">
+				<option value="">Selecione</option>
+				<option *ngFor="let reg of regs" [value]="reg.codigo">
+					{{reg.nome}}
+				</option>
+			</select>
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputSt_fil">Status:</label>
+      <select class="form-control" id="st_fil">
+          <option>Ativo</option>
+          <option>Bloqueado</option>
+        </select>
+    </div>
+  </div>
+  <hr>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label for="inputCc_end_cpt">CEP:</label>
+      <input type="text" class="form-control" id="cc_end_cpt" placeholder="">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputTx_end_log">Logradouro:</label>
+      <input type="text" class="form-control" id="tx_end_log" placeholder="ex: rua 2...">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputTx_end_num">Número:</label>
+      <input type="text" class="form-control" id="tx_end_num" placeholder="ex: 123">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputTx_end_bai">Bairro:</label>
+      <input type="text" class="form-control" id="tx_end_bai" placeholder="">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputTx_end_cmp">Complemento:</label>
+      <input type="text" class="form-control" id="tx_end_cmp" placeholder="">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputCc_end_mun_cod">Código do Município:</label>
+      <input type="text" class="form-control" id="cc_end_mun_cod" placeholder="">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputTx_end_mun_nom">Nome Município:</label>
+      <input type="text" class="form-control" id="tx_end_mun_nom" placeholder="">
+    </div>
+    <div class="form-group col-md-2">
+      <label for="inputCc_end_est">UF:</label>
+      <input type="text" class="form-control" id="cc_end_est" placeholder="">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label for="inputCc_end_pai_cod">Código do País:</label>
+      <input type="text" class="form-control" id="cc_end_pai_cod" placeholder="">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputTx_end_pai_nom">Nome do País:</label>
+      <input type="text" class="form-control" id="tx_end_pai_nom" placeholder="">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputTx_end_tel">Telefone:</label>
+      <input type="text" class="form-control" id="tx_end_tel" placeholder="(xx) xxxxx-xxxx">
+    </div>
+  </div>
+  <hr>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="inputCc_ins_est">Inscrição Estadual:</label>
+      <input type="text" class="form-control" id="cc_ins_est" placeholder="">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="inputCc_ins_mun">Inscrição Municipal:</label>
+      <input type="text" class="form-control" id="cc_ins_mun" placeholder="">
+    </div>
+    <div class="form-group col-md-3">
+      <label for="inputCc_cna_fis">CNAE Fiscal:</label>
+      <input type="text" class="form-control" id="cc_cna_fis" placeholder="">
     </div>
   </div>
 </form>

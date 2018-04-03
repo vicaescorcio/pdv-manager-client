@@ -5,13 +5,13 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FiliaisRoutingModule } from './filiais-routing.module';
 import { FiliaisComponent } from './filiais.component';
-
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   imports: [
     CommonModule,
     FiliaisRoutingModule,
-    SharedModule
+    SharedModule,
+    FormsModule,ReactiveFormsModule
   ],
   exports:[
     FiliaisComponent

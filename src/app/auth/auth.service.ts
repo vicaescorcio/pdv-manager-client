@@ -41,7 +41,7 @@ export class AuthService {
 
   setSession(authResult: TokenApi) {
     const expiresAt = moment().add(authResult.expires_in, "seconds");
-
+    
     localStorage.setItem("access_token", authResult.access_token);
     localStorage.setItem("expires_at", JSON.stringify(expiresAt.valueOf()));
     this.changeStatus();
@@ -55,6 +55,9 @@ export class AuthService {
   }
 
   public isLoggedIn() {
+    console.log(this.getExpiration().toString());
+    console.log(moment().toString())
+   
     return moment().isBefore(this.getExpiration());
   }
 
