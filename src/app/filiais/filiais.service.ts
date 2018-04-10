@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs/Observable';
 import { Page } from './../shared/_models/page';
 import { AuthService } from "./../auth/auth.service";
 import { Filial } from "./filial";
@@ -22,7 +23,9 @@ export class FiliaisService {
     let paginacao: string = `?page=${page}&size=${size}`
     return this.http.get<Page>(this.url+"pesquisa", { headers: this._config.headers });
   }
-  createFilial() {}
+  createFilial(filial:Filial):Observable<Filial> {
+    return this.http.post<Filial>(this.url, filial, {headers:this._config.headers});
+  }
   updateFilial() {}
   removeFilial() {}
 }

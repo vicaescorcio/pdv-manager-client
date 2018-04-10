@@ -5,7 +5,7 @@ body{
 label{
     font-weight: 600;
 }
-input{
+input, select{
     border-radius: 10px !important;
 
 }
@@ -13,5 +13,11 @@ input:hover {
     border-color: green !important;
 }
 input:focus {
+    border-color: green !important;
+}
+select:hover {
+    border-color: green !important;
+}
+select:focus {
     border-color: green !important;
 }

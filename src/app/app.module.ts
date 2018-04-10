@@ -9,7 +9,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 import { JwtInterceptor } from "./_helpers/jwt.interceptor";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -20,6 +20,7 @@ import { FormsModule } from "@angular/forms";
     AuthModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
   ],
   exports: [],
   providers: [
