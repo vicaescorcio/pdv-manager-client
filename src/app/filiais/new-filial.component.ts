@@ -1,28 +1,51 @@
-import { Cc_EstValidator } from './../shared/_validators/cc_end_est';
-import { Cc_FilValidator } from './../shared/_validators/cc_fil';
+import { Masks } from "./../masks";
+
+import { Cc_EstValidator } from "./../shared/_validators/cc_end_est";
+import { Cc_FilValidator } from "./../shared/_validators/cc_fil";
 import { FiliaisService } from "./filiais.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Filial } from "./filial";
 import { Component, OnInit } from "@angular/core";
-
+import { Injectable } from '@angular/core';
 @Component({
   selector: "pdv-new-filial",
   templateUrl: "./new-filial.component.html",
   styleUrls: ["./new-filial.component.scss"]
 })
+@Injectable()
 export class NewFilialComponent implements OnInit {
   filial: Filial;
   sucesso: boolean = false;
   regs: any = {};
   filialForm: FormGroup;
-  constructor(private fb: FormBuilder, private filialService: FiliaisService) {
+  mask_tel:any;
+  mask_cep:any;
+  mask_cnpj:any;
+  mask_est:any;
+  mask_mun:any;
+  mask_cnae:any;
+  titleAlert:string = 'This field is required';
+  constructor(
+    private fb: FormBuilder,
+    private filialService: FiliaisService,
+    private _mask: Masks
+  ) {
+    this.mask_cep   = _mask.cpt; 
+    this.mask_tel   = _mask.tel;
+    this.mask_cnpj  = _mask.cnpj;
+    this.mask_est   = _mask.ins_est;
+    this.mask_mun   = _mask.ins_mun;
+    this.mask_cnae  = _mask.cnae;
     this.regs = [
       { nome: "Normal", codigo: "N" },
       { nome: "Simples Nacional", codigo: "SN" }
     ];
     this.filial = new Filial();
     this.filialForm = this.fb.group({
-      cc_fil: ["", Validators.compose([Validators.required, Cc_FilValidator.validate])],
+      cc_fil: [
+        "",
+        Validators.compose([Validators.required, Cc_FilValidator.validate])
+      ],
       nm_fil: ["", Validators.required],
       cc_ins_fed: ["", Validators.required],
       st_fil: ["", Validators.required],
@@ -44,6 +67,9 @@ export class NewFilialComponent implements OnInit {
     });
   }
   enviar() {
+    this.filialForm.value['cc_ins_fed'] =this.filialForm.value['cc_ins_fed'].replace(/\D+/g, '')
+    this.filialForm.value['tx_end_te'] =this.filialForm.value['tx_end_tel'].replace(/\D+/g, '')
+    this.filialForm.value['cc_end_cpt'] =this.filialForm.value['cc_end_cpt'].replace(/\D+/g, '')
     if (this.filialForm.dirty && this.filialForm.valid) {
       this.filialService.createFilial(this.filialForm.value).subscribe(
         _authResult => {
@@ -51,6 +77,7 @@ export class NewFilialComponent implements OnInit {
         },
         error => {
           console.log(error);
+          console.log(this.debug())
           this.sucesso = false;
         }
       );
