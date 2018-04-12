@@ -1,8 +1,8 @@
-<nav class="navbar navbar-light">
+<nav class="navbar fixed-top navbar-light">
     <a class="navbar-brand brand-logo" href="#">
         <img src="../../assets/logo-unigex.png" width="150" height="auto" class="d-inline-block  align-top" alt="WebGex">
     </a>
-    <button *ngIf="show" class="navbar-toggle" type="text" (click)="display = true" pButton icon="fa-user"></button>
+    <button *ngIf="show" class="navbar-toggle ui-button-success" type="text" (click)="logout()"icon="fa-sign-out" pButton ></button>
     <p-sidebar [(visible)]="display">
         <h1>Opções</h1>
         <a (click)="logout()">
@@ -10,7 +10,7 @@
     </p-sidebar>
 </nav>
 <div *ngIf="show" class="left">
-    <div class="item">
+    <div [routerLink]="['']" class="item">
         <i class="fa fa-home"></i>
         Filiais
     </div>

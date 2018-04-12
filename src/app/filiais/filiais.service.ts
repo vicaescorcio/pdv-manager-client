@@ -1,5 +1,5 @@
-import { Observable } from 'rxjs/Observable';
-import { Page } from './../shared/_models/page';
+import { Observable } from "rxjs/Observable";
+import { Page } from "./../shared/_models/page";
 import { AuthService } from "./../auth/auth.service";
 import { Filial } from "./filial";
 import { Router } from "@angular/router";
@@ -18,13 +18,22 @@ export class FiliaisService {
 
   url: string = this._config.ServerWithApiUrl + "filial/";
 
-  getFiliais(page:number, size:number) {
-  //>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>TODO>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
-    let paginacao: string = `?page=${page}&size=${size}`
-    return this.http.get<Page>(this.url+"pesquisa", { headers: this._config.headers });
+  getFiliais(page: number, size: number) {
+    let paginacao: string = `?page=${page}&size=${size}`;
+    return this.http.get<Page>(this.url + "pesquisa" + paginacao, {
+      headers: this._config.headers
+    });
   }
-  createFilial(filial:Filial):Observable<Filial> {
-    return this.http.post<Filial>(this.url, filial, {headers:this._config.headers});
+  getFilial(cc_fil:any){
+    let pesquisa: string = `pesquisa?cc_fil=${cc_fil}`;
+    return this.http.get<Page>(this.url + pesquisa, {
+      headers: this._config.headers
+    });
+  }
+  createFilial(filial: Filial): Observable<Filial> {
+    return this.http.post<Filial>(this.url, filial, {
+      headers: this._config.headers
+    });
   }
   updateFilial() {}
   removeFilial() {}

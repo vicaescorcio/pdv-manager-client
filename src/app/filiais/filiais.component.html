@@ -1,12 +1,27 @@
-
 <div class="ui-g">
   <div class="ui-g-12">
-      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA=="
-      />
-    <p-dataTable [value]="filiais" [paginator]="true" [rows]="rows" [first]="first" [scrollable]="true" [lazy]="true" (onLazyLoad)="loadData($event)"
+    <p-dataTable [value]="filiais" [loading]="loading" loadingIcon="fa-spinner" [responsive]="true" [paginator]="true" [rows]="rows" [first]="first" [scrollable]="true" [lazy]="true" (onLazyLoad)="loadData($event)"
       [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,20]">
-      <p-column field="cc_org" header="Código"></p-column>
-      <p-column field="cc_fil" header="Descrição"></p-column>
+      <p-column field="cc_fil" header="Filial"></p-column>
+      <p-column field="nm_fil" header="Nome"></p-column>
+      <p-column field="cc_ins_fed" header="CNPJ"></p-column>
+      <p-column field="tx_end_log" header="Logradouro"></p-column>
+      <p-column field="tx_end_num" header="Número"></p-column>
+      <p-column>
+        <ng-template let-f="rowData" pTemplate="body">
+          <button pButton type="button" class="tbutton" (click)="showDialog(f.cc_fil)" icon="fa-eye"></button>
+          <button pButton type="button" class="tbutton ui-button-warning" (click)="showDialog(f.cc_fil)" icon="fa-edit"></button>
+          <button pButton type="button" class="tbutton ui-button-danger" (click)="showDialog(f.cc_fil)" icon="fa-remove"></button>
+        </ng-template>
+      </p-column>
     </p-dataTable>
+    <button pButton type="button" [routerLink]="['new-filial']" class="add-button ui-button-success" icon="fa-plus"></button>
   </div>
+
 </div>
+
+<p-dialog header="Title" [(visible)]="display">
+ <p>Organização</p>
+ <span></span>
+
+</p-dialog>

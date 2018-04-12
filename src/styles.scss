@@ -1,23 +1,35 @@
 /* You can add global styles to this file, and also import other style files */
-body{
-    font-family: "Lastwaerk";
+body {
+  font-family: "Lastwaerk";
 }
-label{
-    font-weight: 600;
+label {
+  font-weight: 600;
 }
-input, select{
-    border-radius: 10px !important;
-
+input,
+select {
+  border-radius: 10px !important;
 }
 input:hover {
-    border-color: green !important;
+  border-color: green !important;
 }
 input:focus {
-    border-color: green !important;
+  border-color: green !important;
 }
 select:hover {
-    border-color: green !important;
+  border-color: green !important;
 }
 select:focus {
-    border-color: green !important;
+  border-color: green !important;
+}
+.container {
+  margin-top: 90px !important;
+}
+@media only screen and(max-width:600px) {
+
+}
+*:focus {
+  outline-color: white !important;
+}
+button{
+  cursor: pointer;
 }

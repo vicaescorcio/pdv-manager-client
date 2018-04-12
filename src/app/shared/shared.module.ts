@@ -1,4 +1,4 @@
-import { Masks } from './../masks';
+import { Masks } from './masks';
 import { UpperDirective } from './_directives/upper.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './../app.component';
@@ -9,6 +9,7 @@ import { ButtonModule } from 'primeng/components/button/button';
 import {SidebarModule} from 'primeng/sidebar';
 import {DataTableModule} from 'primeng/datatable';
 import { TextMaskModule } from 'angular2-text-mask';
+import {DialogModule} from 'primeng/dialog';
 @NgModule({
   imports: [
     CommonModule,
@@ -17,7 +18,8 @@ import { TextMaskModule } from 'angular2-text-mask';
     SidebarModule,
     BrowserAnimationsModule,
     DataTableModule,
-    TextMaskModule
+    TextMaskModule,
+    DialogModule
     
     
    
@@ -26,6 +28,6 @@ import { TextMaskModule } from 'angular2-text-mask';
   providers:[Masks],
   exports:[ 
     ButtonModule,TextMaskModule,
-    SidebarModule, BrowserAnimationsModule, DataTableModule,UpperDirective ]
+    SidebarModule, BrowserAnimationsModule, DataTableModule,UpperDirective, DialogModule ]
 })
 export class SharedModule { }

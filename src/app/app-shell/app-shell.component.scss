@@ -2,6 +2,7 @@
   background-color: #228b22;
   border-bottom: 1px solid #228b22;
   box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.466);
+  
 }
 .brand-logo {
   margin: 0 auto;
@@ -13,20 +14,26 @@ td,
 th {
   vertical-align: middle !important;
 }
-.left,
-.right {
+.left{
   float: left;
-  height: 100vh;
+  height: 800px;
 }
 
 .left {
+  margin-top: -12px;
   background: #4db733;
   display: inline-block;
   white-space: nowrap;
   width: 50px;
-  //height: 700px;
   transition: width 1s;
   font-weight: 500;
+  position: relative;
+}
+
+@media only screen and (max-width:800px){
+    .left{
+      height: 1800px;
+    }
 }
 
 
@@ -45,6 +52,7 @@ th {
 }
 
 .item {
+  margin-top:10px;
   height: 50px;
   overflow: hidden;
   color: #fff;
