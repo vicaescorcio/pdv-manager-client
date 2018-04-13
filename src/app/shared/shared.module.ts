@@ -1,3 +1,4 @@
+import { UpperCaseText } from './_directives/text-transformer.directive';
 import { Masks } from './masks';
 import { UpperDirective } from './_directives/upper.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -24,10 +25,10 @@ import {DialogModule} from 'primeng/dialog';
     
    
   ],
-  declarations:[UpperDirective],
+  declarations:[UpperDirective,UpperCaseText],
   providers:[Masks],
   exports:[ 
     ButtonModule,TextMaskModule,
-    SidebarModule, BrowserAnimationsModule, DataTableModule,UpperDirective, DialogModule ]
+    SidebarModule, BrowserAnimationsModule, DataTableModule,UpperDirective, DialogModule, UpperCaseText ]
 })
 export class SharedModule { }

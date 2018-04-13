@@ -9,6 +9,7 @@ import { LazyLoadEvent } from "primeng/primeng";
 })
 export class FiliaisComponent implements OnInit {
   constructor(private filialService: FiliaisService) {}
+  private sub:any
   filiais: Filial[] = [];
   first: boolean = false;
   rows: number = 0;
@@ -20,7 +21,7 @@ export class FiliaisComponent implements OnInit {
   ngOnInit() {}
 
   getAll(page: number, size: number) {
-    this.filialService.getFiliais(page, size).subscribe(
+    this.sub = this.filialService.getFiliais(page, size).subscribe(
       _page => {
         this.filiais = _page.content;
         this.first = _page.first;
@@ -42,7 +43,7 @@ export class FiliaisComponent implements OnInit {
     }
   }
   showDialog(cc_fil:string){
-    this.filialService.getFilial(cc_fil).subscribe(_page=>{
+   this.sub =  this.filialService.getFilial(cc_fil).subscribe(_page=>{
        this.filial = _page.content
       console.log(this.filial)
     }, error=>{
@@ -50,5 +51,7 @@ export class FiliaisComponent implements OnInit {
     });
     this.display = true;
   }
-
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 }

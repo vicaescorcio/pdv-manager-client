@@ -7,5 +7,5 @@ export class Configuration {
     public ApiUrl  = 'api/';
     public AuthUrl = 'auth/login';
     public ServerWithApiUrl = this.Server + this.ApiUrl;
-    public ServerWithAuthUrl =   this.Server + this.AuthUrl;
+    public ServerWithAuthUrl =   this.Server + this.AuthUrl; 
 }

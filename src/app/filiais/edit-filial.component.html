@@ -1,11 +1,10 @@
-<h1>Nova Filial</h1>
+<h1>Editar Filial</h1>
 <hr>
 <div class="alert alert-danger" role="alert" *ngIf="!sucesso">
   {{server_error}}
   <br />
 </div>
-
-<form [formGroup]="filialForm" (ngSubmit)="enviar(filialForm.value)">
+<form [formGroup]="filialForm" (ngSubmit)="update(filialForm.value)">
   <div class="form-row">
     <div class="form-group col-md-4">
       <label>Código:</label>
@@ -112,7 +111,7 @@
   <hr>
   <div class="form-group text-center">
     <button type="submit" class="btn btn-success" [disabled]="!filialForm.valid">
-      Enviar
+      Registrar
     </button>
     <div *ngIf="loading;"> <img src="./../assets/loading.gif" alt=""></div>
   </div>

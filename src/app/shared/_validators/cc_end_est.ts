@@ -34,7 +34,7 @@ export class Cc_EstValidator {
 
    
 	static validate(control: AbstractControl): {[key: string]: boolean} {
-		if (Cc_EstValidator.CC_EST_REGEX.test(control.value) || !Cc_EstValidator.uf.includes(control.value)) {
+		if (Cc_EstValidator.CC_EST_REGEX.test(control.value) && Cc_EstValidator.uf.includes(control.value)) {
 			    return null;
 		}
 		return { 'cc_end_est': true };

@@ -1,7 +1,7 @@
 <div class="ui-g">
   <div class="ui-g-12">
-    <p-dataTable [value]="filiais" [loading]="loading" loadingIcon="fa-spinner" [responsive]="true" [paginator]="true" [rows]="rows" [first]="first" [scrollable]="true" [lazy]="true" (onLazyLoad)="loadData($event)"
-      [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,20]">
+    <p-dataTable [value]="filiais" [loading]="loading" loadingIcon="fa-spinner" [responsive]="true" [paginator]="true" [rows]="rows"
+      [first]="first" [scrollable]="true" [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,20]">
       <p-column field="cc_fil" header="Filial"></p-column>
       <p-column field="nm_fil" header="Nome"></p-column>
       <p-column field="cc_ins_fed" header="CNPJ"></p-column>
@@ -10,18 +10,122 @@
       <p-column>
         <ng-template let-f="rowData" pTemplate="body">
           <button pButton type="button" class="tbutton" (click)="showDialog(f.cc_fil)" icon="fa-eye"></button>
-          <button pButton type="button" class="tbutton ui-button-warning" (click)="showDialog(f.cc_fil)" icon="fa-edit"></button>
-          <button pButton type="button" class="tbutton ui-button-danger" (click)="showDialog(f.cc_fil)" icon="fa-remove"></button>
+          <button pButton type="button" [routerLink]="['edit-filial/',f.cc_fil]" class="tbutton ui-button-warning" icon="fa-edit"></button>
         </ng-template>
       </p-column>
     </p-dataTable>
     <button pButton type="button" [routerLink]="['new-filial']" class="add-button ui-button-success" icon="fa-plus"></button>
   </div>
-
 </div>
-
-<p-dialog header="Title" [(visible)]="display">
- <p>Organização</p>
- <span></span>
-
+<p-dialog header="Filial" [(visible)]="display" [contentStyle]="{'max-height':'400px'}">
+  <div *ngIf="filial;" class="">
+    <div class="row">
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+      <div class="col col-sm-12 col-md-3">
+        <div class="title-card">
+          Organização:
+        </div>
+        <div class="value-card">{{filial['0'].cc_org}}</div>
+      </div>
+    </div>
+    <hr>
+  </div>
 </p-dialog>

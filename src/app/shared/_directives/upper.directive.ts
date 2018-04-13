@@ -12,6 +12,5 @@ export class UpperDirective{
   
     @HostListener('keyup') onKeyUp() {
       this.el.nativeElement.value = this.el.nativeElement.value.toUpperCase();
-  
     }
 }

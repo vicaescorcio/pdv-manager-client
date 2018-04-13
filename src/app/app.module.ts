@@ -1,6 +1,5 @@
 import { CanActivateViaAuthGuard } from "./_guard/canactivateauth.guard";
 import { AuthModule } from "./auth/auth.module";
-
 import { AppShellModule } from "./app-shell/app-shell.module";
 import { FiliaisModule } from "./filiais/filiais.module";
 import { BrowserModule } from "@angular/platform-browser";

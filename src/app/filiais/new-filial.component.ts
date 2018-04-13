@@ -6,6 +6,7 @@ import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { Filial } from "./filial";
 import { Component, OnInit } from "@angular/core";
 import { Injectable } from '@angular/core';
+import * as cepPromise from 'cep-promise/dist/cep-promise-browser'
 @Component({
   selector: "pdv-new-filial",
   templateUrl: "./new-filial.component.html",
@@ -13,8 +14,9 @@ import { Injectable } from '@angular/core';
 })
 @Injectable()
 export class NewFilialComponent implements OnInit {
-  filial: Filial;
+  private sub:any
   sucesso: boolean = true;
+  loading:boolean = false;
   server_error:string;
   regs: any = {};
   filialForm: FormGroup;
@@ -37,10 +39,9 @@ export class NewFilialComponent implements OnInit {
     this.mask_mun   = _mask.ins_mun;
     this.mask_cnae  = _mask.cnae;
     this.regs = [
-      { nome: "Normal", codigo: "N" },
-      { nome: "Simples Nacional", codigo: "SN" }
+      { nome: "Normal", codigo: "NACIONAL" },
+      { nome: "Simples Nacional", codigo: "SIMPLES_NACIONAL" }
     ];
-    this.filial = new Filial();
     this.filialForm = this.fb.group({
       cc_fil: [
         "",
@@ -66,28 +67,45 @@ export class NewFilialComponent implements OnInit {
     });
   }
   enviar() {
-    this.filialForm.value['cc_ins_fed'] =this.filialForm.value['cc_ins_fed'].replace(/\D+/g, '')
-    this.filialForm.value['tx_end_te'] =this.filialForm.value['tx_end_tel'].replace(/\D+/g, '')
-    this.filialForm.value['cc_end_cpt'] =this.filialForm.value['cc_end_cpt'].replace(/\D+/g, '')
-    this.filialForm.value['cc_ins_est'] =this.filialForm.value['tx_ins_est'].replace(/\D+/g, '')
-    this.filialForm.value['cc_ins_mun'] =this.filialForm.value['cc_ins_mun'].replace(/\D+/g, '')
-    this.filialForm.value['cc_cna_fis'] =this.filialForm.value['cc_cna_fis'].replace(/\D+/g, '')
+    this.loading = true;
+    this.filialForm.value['cc_ins_fed'] = this.filialForm.value['cc_ins_fed'].replace(/\D+/g, '')
+    this.filialForm.value['tx_end_te']  = this.filialForm.value['tx_end_tel'].replace(/\D+/g, '')
+    this.filialForm.value['cc_end_cpt'] = this.filialForm.value['cc_end_cpt'].replace(/\D+/g, '')
+    this.filialForm.value['cc_ins_est'] = this.filialForm.value['cc_ins_est'].replace(/\D+/g, '')
+    this.filialForm.value['cc_ins_mun'] = this.filialForm.value['cc_ins_mun'].replace(/\D+/g, '')
+    this.filialForm.value['cc_cna_fis'] = this.filialForm.value['cc_cna_fis'].replace(/\D+/g, '')
     
     if (this.filialForm.dirty && this.filialForm.valid) {
-      this.filialService.createFilial(this.filialForm.value).subscribe(
+      this.sub = this.filialService.createFilial(this.filialForm.value).subscribe(
         _authResult => {
+          this.loading = false;
         },
         error => {
           console.log(error);
           console.log(this.debug())
           this.server_error=error.error.message
           this.sucesso = false;
+          this.loading = false;
         }
       );
     }
   }
+
+  setAddress(){
+    let cpt = this.filialForm.value['cc_end_cpt'].replace(/\D+/g, '')
+    cepPromise(cpt).then( _json =>{
+      console.log(_json)
+      this.filialForm.patchValue({'tx_end_log':_json["street"]},{onlySelf: true})  
+      this.filialForm.patchValue({'tx_end_bai': _json["neighborhood"]},{onlySelf:true})
+      this.filialForm.patchValue({'cc_end_est':_json["state"]},{onlySelf:true})
+      this.filialForm.patchValue({'tx_end_mun_nom': _json["city"]},{onlySelf:true})
+    }).catch(console.log)
+  }
   debug(): string {
-    return JSON.stringify(this.filial);
+    return JSON.stringify(this.filialForm.value);
   }
   ngOnInit() {}
+  ngOnDestroy() {
+    this.sub.unsubscribe();
+  }
 }
