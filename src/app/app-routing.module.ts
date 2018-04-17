@@ -1,4 +1,4 @@
-import { FiliaisComponent } from './filiais/filiais.component';
+import { FiliaisComponent } from './filiais/filiais/filiais.component';
 import { CanActivateViaAuthGuard } from './_guard/canactivateauth.guard';
 import { AppComponent } from './app.component';
 import { AuthComponent } from './auth/auth.component';

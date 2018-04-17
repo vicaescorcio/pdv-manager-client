@@ -1,5 +1,5 @@
-import { EditFilialComponent } from "./edit-fiilial.component";
-import { NewFilialComponent } from "./new-filial.component";
+import { EditFilialComponent } from "./edit/edit-fiilial.component";
+import { NewFilialComponent } from "./new/new-filial.component";
 import { CanActivateViaAuthGuard } from "./../_guard/canactivateauth.guard";
 import { NgModule } from "@angular/core";
 import { Routes, RouterModule } from "@angular/router";

@@ -17,7 +17,7 @@
     <button pButton type="button" [routerLink]="['new-filial']" class="add-button ui-button-success" icon="fa-plus"></button>
   </div>
 </div>
-<p-dialog header="Filial" [(visible)]="display" [contentStyle]="{'max-height':'400px'}">
+<p-dialog header="Filial" [(visible)]="display"[contentStyle]="{'max-height':'600px'}">
   <div *ngIf="filial;" class="">
     <div class="row">
       <div class="col col-sm-12 col-md-3">
@@ -28,104 +28,58 @@
       </div>
       <div class="col col-sm-12 col-md-3">
         <div class="title-card">
-          Organização:
+          Código:
         </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
+        <div class="value-card">{{filial['0'].cc_fil}}</div>
       </div>
       <div class="col col-sm-12 col-md-3">
         <div class="title-card">
-          Organização:
+          Razão Social:
         </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
+        <div class="value-card">{{filial['0'].nm_fil}}</div>
       </div>
       <div class="col col-sm-12 col-md-3">
         <div class="title-card">
-          Organização:
+          CNPJ:
         </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
+        <div class="value-card">{{filial['0'].cc_ins_fed}}</div>
       </div>
     </div>
     <hr>
     <div class="row">
       <div class="col col-sm-12 col-md-3">
         <div class="title-card">
-          Organização:
+          Regime Tributário:
         </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
+        <div class="value-card">{{filial['0'].cc_reg_tri}}</div>
       </div>
       <div class="col col-sm-12 col-md-3">
         <div class="title-card">
-          Organização:
+          CNAE:
         </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
+        <div class="value-card">{{filial['0'].cc_cna_fis}}</div>
       </div>
       <div class="col col-sm-12 col-md-3">
         <div class="title-card">
-          Organização:
+          Inscrição Estadual:
         </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
+        <div class="value-card">{{filial['0'].cc_ins_est}}</div>
       </div>
       <div class="col col-sm-12 col-md-3">
         <div class="title-card">
-          Organização:
+          Inscrição Municipal:
         </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
+        <div class="value-card">{{filial['0'].cc_ins_mun}}</div>
       </div>
     </div>
     <hr>
     <div class="row">
       <div class="col col-sm-12 col-md-3">
         <div class="title-card">
-          Organização:
+          Telefone:
         </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
-      </div>
-      <div class="col col-sm-12 col-md-3">
-        <div class="title-card">
-          Organização:
-        </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
-      </div>
-      <div class="col col-sm-12 col-md-3">
-        <div class="title-card">
-          Organização:
-        </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
-      </div>
-      <div class="col col-sm-12 col-md-3">
-        <div class="title-card">
-          Organização:
-        </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
+        <div class="value-card">{{filial['0'].tx_end_tel}}</div>
       </div>
     </div>
-    <hr>
-    <div class="row">
-      <div class="col col-sm-12 col-md-3">
-        <div class="title-card">
-          Organização:
-        </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
-      </div>
-      <div class="col col-sm-12 col-md-3">
-        <div class="title-card">
-          Organização:
-        </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
-      </div>
-      <div class="col col-sm-12 col-md-3">
-        <div class="title-card">
-          Organização:
-        </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
-      </div>
-      <div class="col col-sm-12 col-md-3">
-        <div class="title-card">
-          Organização:
-        </div>
-        <div class="value-card">{{filial['0'].cc_org}}</div>
-      </div>
-    </div>
-    <hr>
   </div>
 </p-dialog>

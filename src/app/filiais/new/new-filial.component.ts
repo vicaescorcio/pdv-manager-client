@@ -1,9 +1,9 @@
-import { Masks } from './../shared/masks';
-import { Cc_EstValidator } from "./../shared/_validators/cc_end_est";
-import { Cc_FilValidator } from "./../shared/_validators/cc_fil";
-import { FiliaisService } from "./filiais.service";
+import { Masks } from './../../shared/masks';
+import { Cc_EstValidator } from "./../../shared/_validators/cc_end_est";
+import { Cc_FilValidator } from "./../../shared/_validators/cc_fil";
+import { FiliaisService } from "./../filiais.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Filial } from "./filial";
+import { Filial } from "./../filial";
 import { Component, OnInit } from "@angular/core";
 import { Injectable } from '@angular/core';
 import * as cepPromise from 'cep-promise/dist/cep-promise-browser'
@@ -39,7 +39,7 @@ export class NewFilialComponent implements OnInit {
     this.mask_mun   = _mask.ins_mun;
     this.mask_cnae  = _mask.cnae;
     this.regs = [
-      { nome: "Normal", codigo: "NACIONAL" },
+      { nome: "Normal", codigo: "NORMAL" },
       { nome: "Simples Nacional", codigo: "SIMPLES_NACIONAL" }
     ];
     this.filialForm = this.fb.group({
@@ -57,7 +57,7 @@ export class NewFilialComponent implements OnInit {
       cc_end_est: ["", Validators.compose([Validators.required, Cc_EstValidator.validate])],
       cc_end_mun_cod: ["", Validators.required],
       tx_end_mun_nom: ["", Validators.required],
-      cc_end_pai_cod: ["1058", Validators.required],
+      cn_end_pai_cod: [1058, Validators.required],
       tx_end_pai_nom: ["BRASIL", Validators.required],
       tx_end_tel: ["", Validators.required],
       cc_ins_est: ["", Validators.required],
@@ -69,7 +69,7 @@ export class NewFilialComponent implements OnInit {
   enviar() {
     this.loading = true;
     this.filialForm.value['cc_ins_fed'] = this.filialForm.value['cc_ins_fed'].replace(/\D+/g, '')
-    this.filialForm.value['tx_end_te']  = this.filialForm.value['tx_end_tel'].replace(/\D+/g, '')
+   //this.filialForm.value['tx_end_tel']  = this.filialForm.value['tx_end_tel'].replace(/\D+/g, '')
     this.filialForm.value['cc_end_cpt'] = this.filialForm.value['cc_end_cpt'].replace(/\D+/g, '')
     this.filialForm.value['cc_ins_est'] = this.filialForm.value['cc_ins_est'].replace(/\D+/g, '')
     this.filialForm.value['cc_ins_mun'] = this.filialForm.value['cc_ins_mun'].replace(/\D+/g, '')
@@ -106,6 +106,6 @@ export class NewFilialComponent implements OnInit {
   }
   ngOnInit() {}
   ngOnDestroy() {
-    this.sub.unsubscribe();
+    
   }
 }

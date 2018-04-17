@@ -2,7 +2,7 @@
     <a class="navbar-brand brand-logo" href="#">
         <img src="../../assets/logo-unigex.png" width="150" height="auto" class="d-inline-block  align-top" alt="WebGex">
     </a>
-    <button *ngIf="show" class="navbar-toggle ui-button-success" type="text" (click)="logout()"icon="fa-sign-out" pButton ></button>
+    <button *ngIf="show" class="navbar-toggle ui-button-success" type="text" (click)="logout()" icon="fa-sign-out" pButton></button>
     <p-sidebar [(visible)]="display">
         <h1>Opções</h1>
         <a (click)="logout()">
@@ -10,17 +10,19 @@
     </p-sidebar>
 </nav>
 <div *ngIf="show" class="left">
-    <div [routerLink]="['']" class="item">
-        <i class="fa fa-home"></i>
-        Filiais
+    <div class="menu">
+        <div [routerLink]="['']" class="item">
+            <i class="fa fa-home"></i>
+            Filiais
+        </div>
+        <div class="item active">
+            <i class="fa fa-shopping-cart"></i>
+            P D V</div>
+        <div class="item">
+            <i class="fa fa-barcode"></i>
+            Produtos</div>
+        <div class="item">
+            <i class="fa fa-users"></i>
+            Empregados</div>
     </div>
-    <div class="item active">
-        <i class="fa fa-shopping-cart"></i>
-        P D V</div>
-    <div class="item">
-        <i class="fa fa-barcode"></i>
-        Produtos</div>
-    <div class="item">
-        <i class="fa fa-users"></i>
-        Empregados</div>
 </div>

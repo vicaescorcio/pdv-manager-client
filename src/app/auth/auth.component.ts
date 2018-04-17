@@ -25,7 +25,7 @@ export class AuthComponent implements OnInit {
   }
   login(){
     this.loading = true;
-    this.authService.getAuth(this.model.username, this.model.password).subscribe(_authResult=>{
+    this.authService.getAuth(this.model.username.trim(), this.model.password.trim()).subscribe(_authResult=>{
        this.authService.setSession(_authResult)
        this.router.navigate([this.returnUrl]);
     },

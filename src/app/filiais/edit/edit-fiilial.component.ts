@@ -1,12 +1,12 @@
 import { ActivatedRoute } from "@angular/router";
 
 import { Component, OnInit } from "@angular/core";
-import { Masks } from "./../shared/masks";
-import { Cc_EstValidator } from "./../shared/_validators/cc_end_est";
-import { Cc_FilValidator } from "./../shared/_validators/cc_fil";
-import { FiliaisService } from "./filiais.service";
+import { Masks } from "./../../shared/masks";
+import { Cc_EstValidator } from "./../../shared/_validators/cc_end_est";
+import { Cc_FilValidator } from "./../../shared/_validators/cc_fil";
+import { FiliaisService } from "./../filiais.service";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
-import { Filial } from "./filial";
+import { Filial } from "./../filial";
 import { Injectable } from "@angular/core";
 import * as cepPromise from "cep-promise/dist/cep-promise-browser";
 
@@ -63,7 +63,7 @@ export class EditFilialComponent implements OnInit {
       cc_end_est: ["",Validators.compose([Validators.required, Cc_EstValidator.validate])],
       cc_end_mun_cod: ["", Validators.required],
       tx_end_mun_nom: ["", Validators.required],
-      cc_end_pai_cod: ["1058", Validators.required],
+      cn_end_pai_cod: [1058, Validators.required],
       tx_end_pai_nom: ["BRASIL", Validators.required],
       tx_end_tel: ["", Validators.required],
       cc_ins_est: ["", Validators.required],
@@ -117,8 +117,23 @@ export class EditFilialComponent implements OnInit {
         _page => {
          this.filial = _page.content[0] 
          console.log(this.filial.nm_fil)
-         this.filialForm.patchValue({ nm_fil: this.filial.nm_fil },{ onlySelf: true });
-          },
+         this.filialForm.patchValue({cc_fil: this.filial.cc_fil },{ onlySelf: true });
+         this.filialForm.patchValue({nm_fil:this.filial.nm_fil },{ onlySelf: true });
+         this.filialForm.patchValue({cc_ins_fed:this.filial.cc_ins_fed },{ onlySelf: true }); 
+         this.filialForm.patchValue({tx_end_log:this.filial.tx_end_log },{ onlySelf: true }); 
+         this.filialForm.patchValue({tx_end_num:this.filial.tx_end_num },{ onlySelf: true }); 
+         this.filialForm.patchValue({tx_end_bai:this.filial.tx_end_bai },{ onlySelf: true }); 
+         this.filialForm.patchValue({cc_end_cpt:this.filial.cc_end_cpt },{ onlySelf: true }); 
+         this.filialForm.patchValue({tx_end_cmp:this.filial.tx_end_cmp },{ onlySelf: true }); 
+         this.filialForm.patchValue({cc_end_est:this.filial.cc_end_est },{ onlySelf: true }); 
+         this.filialForm.patchValue({cc_end_mun_cod:this.filial.cc_end_mun_cod },{ onlySelf: true }); 
+         this.filialForm.patchValue({tx_end_mun_nom:this.filial.tx_end_mun_nom },{ onlySelf: true });  
+         this.filialForm.patchValue({tx_end_tel:this.filial.tx_end_tel },{ onlySelf: true }); 
+         this.filialForm.patchValue({cc_ins_est:this.filial.cc_ins_est },{ onlySelf: true }); 
+         this.filialForm.patchValue({cc_ins_mun:this.filial.cc_ins_mun },{ onlySelf: true }); 
+         this.filialForm.patchValue({cc_cna_fis:this.filial.cc_cna_fis },{ onlySelf: true }); 
+         this.filialForm.patchValue({cc_reg_tri:this.filial.cc_reg_tri },{ onlySelf: true }); 
+        },
         error => {
           console.log(error);
         }

@@ -2,8 +2,10 @@
 <hr>
 <div class="alert alert-danger" role="alert" *ngIf="!sucesso">
   {{server_error}}
+  
   <br />
 </div>
+{{filialForm.error}}
 <form [formGroup]="filialForm" (ngSubmit)="update(filialForm.value)">
   <div class="form-row">
     <div class="form-group col-md-4">

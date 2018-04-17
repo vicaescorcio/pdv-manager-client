@@ -1,3 +1,5 @@
+import { ProdutoModule } from './produto/produto.module';
+import { PdvModule } from './pdv/pdv.module';
 import { CanActivateViaAuthGuard } from "./_guard/canactivateauth.guard";
 import { AuthModule } from "./auth/auth.module";
 import { AppShellModule } from "./app-shell/app-shell.module";
@@ -10,7 +12,7 @@ import { AppComponent } from "./app.component";
 import { JwtInterceptor } from "./_helpers/jwt.interceptor";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent ],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -20,6 +22,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    PdvModule,
+    ProdutoModule
   ],
   exports: [],
   providers: [

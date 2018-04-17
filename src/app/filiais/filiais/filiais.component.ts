@@ -1,5 +1,5 @@
-import { Filial } from "./filial";
-import { FiliaisService } from "./filiais.service";
+import { Filial } from "./../filial";
+import { FiliaisService } from "./../filiais.service";
 import { Component, OnInit } from "@angular/core";
 import { LazyLoadEvent } from "primeng/primeng";
 @Component({
