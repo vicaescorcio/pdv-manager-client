@@ -21,6 +21,14 @@ select:hover {
 select:focus {
   border-color: green !important;
 }
+
+.red-border-class{
+  border-color: red;
+}
+h1{
+  font-weight: 800;
+}
+
 .container {
   margin-top: 90px !important;
 }
@@ -33,6 +41,9 @@ select:focus {
 button{
   cursor: pointer;
 }
+
+
+/*datatables*/
 .ui-column-title{
   color: black;
   font-size: 20px;
@@ -43,4 +54,30 @@ button{
   font-family: "Lastwaerk" !important;
   font-size:15px;
   font-weight: 600;
+}
+
+.tbutton{
+  float: left;
+  margin:5px;
+}
+.title-card{
+   font-weight:600; 
+}
+.add-button{
+   position: fixed;
+   right: 5%;
+   bottom:10%;
+   width: 65px;
+   height: 65px;
+   border-radius: 65px;
+   font-size: 25px;
+}
+@media only screen and(max-width:600px){
+   .add-button{
+       bottom:20%;
+       width: 60px;
+       height: 60px;
+       border-radius: 60px;
+       font-size: 30px;
+   }
 }

@@ -14,7 +14,7 @@ export class FiliaisComponent implements OnInit {
   first: boolean = false;
   rows: number = 0;
   totalRecords: number = 0;
-  lazy: boolean = true;
+  lazy: boolean =true;
   display: boolean = false;
   filial :any;
   loading = true;
@@ -27,7 +27,7 @@ export class FiliaisComponent implements OnInit {
         this.first = _page.first;
         this.rows = _page.size;
         this.totalRecords = _page.totalElements;
-        this.lazy = true;
+        this.lazy =true
         this.loading = false;
         console.log(_page);
       },
@@ -39,7 +39,11 @@ export class FiliaisComponent implements OnInit {
 
   loadData(event: LazyLoadEvent) {
     if (this.lazy) {
-      this.getAll(event.first, 20);
+      let _first:number = event.first
+      //if(_first instanceof Boolean ){_first = 0}
+      console.log(">>>>>>>" +JSON.stringify(event))
+      this.getAll(event.first, this.rows);
+     
     }
   }
   showDialog(cc_fil:string){

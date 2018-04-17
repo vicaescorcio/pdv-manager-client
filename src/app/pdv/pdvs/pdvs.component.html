@@ -1,3 +1,17 @@
-<p>
-  pdvs works!
-</p>
+<div class="ui-g">
+  <div class="ui-g-12">
+    <p-dataTable [value]="pdvs" [loading]="loading" loadingIcon="fa-spinner" [responsive]="true" [paginator]="true" [rows]="rows"
+      [first]="first" [scrollable]="true" [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,20]">
+      <p-column field="cc_fil" header="Filial"></p-column>
+      <p-column field="cc_pdv" header="Código"></p-column>
+      <p-column field="st_pdv" header="Status"></p-column>
+      <p-column>
+        <ng-template let-f="rowData" pTemplate="body">
+          <button pButton type="button" class="tbutton" icon="fa-eye"></button>
+          <button pButton type="button" class="tbutton ui-button-warning" icon="fa-edit"></button>
+        </ng-template>
+      </p-column>
+    </p-dataTable>
+    <button pButton type="button" [routerLink]="['/new-pdv']"  class="add-button ui-button-success" icon="fa-plus"></button>
+  </div>
+</div>

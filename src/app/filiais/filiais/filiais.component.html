@@ -1,7 +1,7 @@
 <div class="ui-g">
   <div class="ui-g-12">
     <p-dataTable [value]="filiais" [loading]="loading" loadingIcon="fa-spinner" [responsive]="true" [paginator]="true" [rows]="rows"
-      [first]="first" [scrollable]="true" [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,20]">
+      [first]="first" [scrollable]="true" [lazy]="true"  (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords" [rowsPerPageOptions]="[2,10,20]">
       <p-column field="cc_fil" header="Filial"></p-column>
       <p-column field="nm_fil" header="Nome"></p-column>
       <p-column field="cc_ins_fed" header="CNPJ"></p-column>

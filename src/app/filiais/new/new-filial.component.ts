@@ -69,7 +69,6 @@ export class NewFilialComponent implements OnInit {
   enviar() {
     this.loading = true;
     this.filialForm.value['cc_ins_fed'] = this.filialForm.value['cc_ins_fed'].replace(/\D+/g, '')
-   //this.filialForm.value['tx_end_tel']  = this.filialForm.value['tx_end_tel'].replace(/\D+/g, '')
     this.filialForm.value['cc_end_cpt'] = this.filialForm.value['cc_end_cpt'].replace(/\D+/g, '')
     this.filialForm.value['cc_ins_est'] = this.filialForm.value['cc_ins_est'].replace(/\D+/g, '')
     this.filialForm.value['cc_ins_mun'] = this.filialForm.value['cc_ins_mun'].replace(/\D+/g, '')
@@ -79,12 +78,12 @@ export class NewFilialComponent implements OnInit {
       this.sub = this.filialService.createFilial(this.filialForm.value).subscribe(
         _authResult => {
           this.loading = false;
+          this.sucesso = false
         },
         error => {
           console.log(error);
           console.log(this.debug())
           this.server_error=error.error.message
-          this.sucesso = false;
           this.loading = false;
         }
       );

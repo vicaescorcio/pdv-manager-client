@@ -1,10 +1,15 @@
 <h1>Nova Filial</h1>
 <hr>
-<div class="alert alert-danger" role="alert" *ngIf="!sucesso">
+<div class="alert alert-danger" role="alert" *ngIf="server_error">
   {{server_error}}
   <br />
 </div>
-
+<div *ngIf="!sucesso" class="alert alert-success" role="alert">
+  Enviado com sucesso!
+  <button (click)="sucesso = true;" class="btn btn-success">
+    Adicionar outro
+  </button>
+</div>
 <form [formGroup]="filialForm" (ngSubmit)="enviar(filialForm.value)">
   <div class="form-row">
     <div class="form-group col-md-4">

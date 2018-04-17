@@ -1,3 +1,5 @@
+import { FiliaisModule } from './../filiais/filiais.module';
+import { FiliaisService } from './../filiais/filiais.service';
 import { UpperCaseText } from './_directives/text-transformer.directive';
 import { Masks } from './masks';
 import { UpperDirective } from './_directives/upper.directive';
@@ -11,6 +13,7 @@ import {SidebarModule} from 'primeng/sidebar';
 import {DataTableModule} from 'primeng/datatable';
 import { TextMaskModule } from 'angular2-text-mask';
 import {DialogModule} from 'primeng/dialog';
+
 @NgModule({
   imports: [
     CommonModule,
@@ -20,11 +23,7 @@ import {DialogModule} from 'primeng/dialog';
     BrowserAnimationsModule,
     DataTableModule,
     TextMaskModule,
-    DialogModule
-    
-    
-   
-  ],
+    DialogModule  ],
   declarations:[UpperDirective,UpperCaseText],
   providers:[Masks],
   exports:[ 
