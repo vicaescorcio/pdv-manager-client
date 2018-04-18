@@ -20,6 +20,7 @@ export class PdvsComponent implements OnInit {
   loading = true;
 
   ngOnInit() {
+    this.getAll(0, 10); 
   }
   getAll(page:number, size:number){
     this.pdvService.getPdvs(page,size).subscribe(_page=>{
@@ -29,15 +30,15 @@ export class PdvsComponent implements OnInit {
       this.totalRecords = _page.totalElements;
       this.lazy = true;
       this.loading = false;
-      console.log(_page);
+      console.log(_page)
     }, error=>{
       console.log(error);
     })
 
   }
   loadData(event: LazyLoadEvent) {
-    if (this.lazy) {
-      this.getAll(event.first, event.rows); 
+    if (typeof event.first =="number") {
+      this.getAll(event.first/event.rows, event.rows); 
     }
   }
   paginate(event) {

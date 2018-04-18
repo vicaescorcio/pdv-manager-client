@@ -18,7 +18,7 @@ export class FiliaisComponent implements OnInit {
   display: boolean = false;
   filial :any;
   loading = true;
-  ngOnInit() {}
+  ngOnInit() {this.getAll(0, 2); }
 
   getAll(page: number, size: number) {
     this.sub = this.filialService.getFiliais(page, size).subscribe(
@@ -37,13 +37,12 @@ export class FiliaisComponent implements OnInit {
     );
   }
 
-  loadData(event: LazyLoadEvent) {
-    if (this.lazy) {
-      let _first:number = event.first
-      //if(_first instanceof Boolean ){_first = 0}
-      console.log(">>>>>>>" +JSON.stringify(event))
-      this.getAll(event.first, this.rows);
-     
+  loadData(event) {
+    let _first = event.first
+    console.log(event.first)
+    if (typeof event.first =="number") {
+      this.getAll(event.first/event.rows, event.rows); 
+      event.first = true;
     }
   }
   showDialog(cc_fil:string){
