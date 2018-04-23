@@ -10,7 +10,7 @@
     Adicionar outro
   </button>
 </div>
-<form *ngIf="sucesso" [formGroup]="pdvForm" (ngSubmit)="enviar(pdvForm.value)">
+<form *ngIf="sucesso" [formGroup]="pdvForm" (ngSubmit)="edit? enviar():update()">
   <div class="form-row">
     <div class="form-group col-md-4">
       <label>Filial:</label>

@@ -14,6 +14,11 @@ const routes: Routes = [
     path:"new-pdv",
     component:NewPdvComponent,
     canActivate: [CanActivateViaAuthGuard]
+  },
+  {
+    path:"edit-pdv/:cc_pdv",
+    component:NewPdvComponent,
+    canActivate: [CanActivateViaAuthGuard]
   }
 ];
 

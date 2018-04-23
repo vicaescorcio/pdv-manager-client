@@ -23,4 +23,17 @@ export class PdvService {
   createPdv(pdv:Pdv):Observable<Pdv>{
     return this.http.post<Pdv>(this.url,pdv,{headers:this._config.headers});
   }
+
+  updatePdv(pdv: Pdv) {
+    return this.http.put<Pdv>(this.url+ JSON.stringify(pdv), {
+      headers: this._config.headers
+    });
+  }
+
+  getPdv(cc_pdv: any) {
+    let pesquisa: string = `pesquisa?cc_pdv=${cc_pdv}`;
+    return this.http.get<Page>(this.url + pesquisa, {
+      headers: this._config.headers
+    });
+  }
 }

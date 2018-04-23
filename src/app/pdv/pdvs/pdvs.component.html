@@ -6,9 +6,9 @@
       <p-column field="cc_pdv" header="Código"></p-column>
       <p-column field="st_pdv" header="Status"></p-column>
       <p-column>
-        <ng-template let-f="rowData" pTemplate="body">
+        <ng-template let-p="rowData" pTemplate="body">
           <button pButton type="button" class="tbutton" icon="fa-eye"></button>
-          <button pButton type="button" class="tbutton ui-button-warning" icon="fa-edit"></button>
+          <button pButton type="button" [routerLink]="['/edit-pdv/',p.cc_pdv]" class="tbutton ui-button-warning" icon="fa-edit"></button>
         </ng-template>
       </p-column>
     </p-dataTable>
