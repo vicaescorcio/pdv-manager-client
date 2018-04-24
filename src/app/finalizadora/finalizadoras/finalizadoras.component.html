@@ -1,0 +1,19 @@
+<div class="ui-g">
+  <div class="ui-g-12">
+    <p-dataTable [value]="finalizadoras" [loading]="loading" loadingIcon="fa-spinner" [responsive]="true" [paginator]="true" [rows]="rows"
+      [first]="first" [scrollable]="true" [lazy]="true"  (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords" [rowsPerPageOptions]="[2,10,20]">
+      <p-column field="cc_fil" header="Filial"></p-column>
+      <p-column field="cc_fin" header="Código"></p-column>
+      <p-column field="cc_ger_tef" header="TEF"></p-column>
+      <p-column field="cc_fin_con" header="Finalizadora"></p-column>
+      <p-column field="tx_cha_adq" header="Adquirente"></p-column>
+      <p-column>
+        <ng-template let-f="rowData" pTemplate="body">
+          <button pButton type="button" class="tbutton" (click)="showDialog(f.cc_fin)" icon="fa-eye"></button>
+          <button pButton type="button" [routerLink]="['edit-finalizadora/',f.cc_fin]" class="tbutton ui-button-warning" icon="fa-edit"></button>
+        </ng-template>
+      </p-column>
+    </p-dataTable>
+    <button pButton type="button" [routerLink]="['/new-finalizadora']" class="add-button ui-button-success" icon="fa-plus"></button>
+  </div>
+</div>

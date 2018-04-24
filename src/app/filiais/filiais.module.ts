@@ -6,7 +6,7 @@ import { CommonModule } from '@angular/common';
 import { FiliaisRoutingModule } from './filiais-routing.module';
 import { FiliaisComponent } from './filiais/filiais.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { EditFilialComponent } from './edit/edit-fiilial.component';
+
 
 @NgModule({
   imports: [
@@ -18,7 +18,7 @@ import { EditFilialComponent } from './edit/edit-fiilial.component';
   exports:[
     FiliaisComponent
   ],
-  declarations: [FiliaisComponent, NewFilialComponent, EditFilialComponent],
+  declarations: [FiliaisComponent, NewFilialComponent],
   providers:[FiliaisService]
 })
 export class FiliaisModule { }

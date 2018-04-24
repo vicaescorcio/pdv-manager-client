@@ -1,0 +1,23 @@
+
+#login-container{
+
+    margin: 15% auto;
+    border: 1px solid rgb(170, 170, 170);
+    border-radius:10px;
+    padding: 20px;
+    box-shadow:2px 2px 10px rgb(26, 99, 26);
+    width: 40%;
+}
+h2{
+    text-align: center;
+}
+.btn-link{
+    font-size: 12px;
+}
+@media only screen and (max-width:800px) {
+   #login-container{
+       width:83%;
+       margin: 35% auto;
+   }
+    
+}

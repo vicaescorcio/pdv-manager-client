@@ -1,3 +1,4 @@
+import { FinalizadoraModule } from './finalizadora/finalizadora.module';
 import { ProdutoModule } from './produto/produto.module';
 import { PdvModule } from './pdv/pdv.module';
 import { CanActivateViaAuthGuard } from "./_guard/canactivateauth.guard";
@@ -11,8 +12,12 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { AppComponent } from "./app.component";
 import { JwtInterceptor } from "./_helpers/jwt.interceptor";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
+
+
+
 @NgModule({
-  declarations: [AppComponent ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -23,7 +28,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
     PdvModule,
-    ProdutoModule
+    ProdutoModule,
+    FinalizadoraModule
   ],
   exports: [],
   providers: [

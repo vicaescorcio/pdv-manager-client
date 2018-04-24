@@ -1,0 +1,103 @@
+<h1>Nova Finalizadora</h1>
+<hr>
+<div class="alert alert-danger" role="alert" *ngIf="server_error">
+  {{server_error}}
+  <br />
+</div>
+<div *ngIf="!sucesso" class="alert alert-success" role="alert">
+  Enviado com sucesso!
+  <button (click)="sucesso = true;" class="btn btn-success">
+    Adicionar outro
+  </button>
+</div>
+<form *ngIf="sucesso" [formGroup]="finalizadoraForm" (ngSubmit)="enviar()">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label>Filial:</label>
+      <select formControlName="cc_fil" [ngClass]="{'red-border-class':!finalizadoraForm.controls['cc_fil'].valid && finalizadoraForm.controls['cc_fil'].touched }"
+        class="form-control">
+        <option value="">Selecione</option>
+        <option *ngFor="let filial of filiais" [value]="filial.cc_fil">
+          {{filial.nm_fil}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label>Código:</label>
+      <input type="text" [ngClass]="{'red-border-class':!finalizadoraForm.controls['cc_fin'].valid &&finalizadoraForm.controls['cn_fin'].touched }"
+        class="form-control" formControlName="cc_fin">
+    </div>
+    <div class="form-group col-md-3">
+      <label>Ds_fin:</label>
+      <input type="text" [ngClass]="{'red-border-class':!finalizadoraForm.controls['ds_fin'].valid &&finalizadoraForm.controls['ds_fin'].touched }"
+        class="form-control" formControlName="ds_fin">
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-2">
+      <label>Cn Fin:</label>
+      <input  type="text" [ngClass]="{'red-border-class':!finalizadoraForm.controls['cn_fin'].valid &&finalizadoraForm.controls['cn_fin'].touched }"
+        class="form-control" formControlName="cn_fin" placeholder="">
+    </div>
+    <div class="form-group col-md-4">
+      <label>Cc Fit:</label>
+      <select formControlName="cc_fit" [ngClass]="{'red-border-class':!finalizadoraForm.controls['cc_fit'].valid && finalizadoraForm.controls['cc_fit'].touched }"
+        class="form-control">
+        <option value="">Selecione</option>
+        <option *ngFor="let fit of fits" [value]="fit.codigo">
+          {{fit.desc}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label>Cc ger tef:</label>
+      <input type="text" [ngClass]="{'red-border-class':!finalizadoraForm.controls['cc_ger_tef'].valid &&finalizadoraForm.controls['cc_ger_tef'].touched }"
+        class="form-control" formControlName="cc_ger_tef" placeholder="">
+    </div>
+    <div class="form-group col-md-4">
+      <label>Condição de Pagamento:</label>
+      <select formControlName="cc_fin_con" [ngClass]="{'red-border-class':!finalizadoraForm.controls['cc_fin_con'].valid && finalizadoraForm.controls['cc_fin_con'].touched }"
+        class="form-control">
+        <option value="">Selecione</option>
+        <option *ngFor="let fincon of fin_con" [value]="fin_con.codigo">
+          {{fincon.desc}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-md-5">
+      <label>Tx Cha Adq:</label>
+      <input type="text" [ngClass]="{'red-border-class':!finalizadoraForm.controls['tx_cha_adq'].valid &&finalizadoraForm.controls['tx_cha_adq'].touched }"
+        class="form-control" formControlName="tx_cha_adq" placeholder="">
+    </div>
+  </div>
+
+  <hr>
+  <div class="form-row">
+
+    <div class="form-group col-md-4">
+      <label>Cc rec:</label>
+      <select formControlName="cc_rec" [ngClass]="{'red-border-class':!finalizadoraForm.controls['cc_rec'].valid && finalizadoraForm.controls['cc_rec'].touched }"
+        class="form-control">
+        <option value="">Selecione</option>
+        <option *ngFor="let recurso of recursos" [value]="recurso.cc_rec">
+          {{recurso.nm_rec}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label>Bl Rec:</label>
+      <input type="text" [ngClass]="{'red-border-class':!finalizadoraForm.controls['bl_rec'].valid &&finalizadoraForm.controls['bl_rec'].touched }"
+        class="form-control" formControlName="bl_rec" placeholder="">
+    </div>
+  </div>
+
+
+  <div class="form-group text-center">
+    <button type="submit" class="btn btn-success" [disabled]="!finalizadoraForm.valid">
+      Enviar
+    </button>
+    <div *ngIf="loading;">
+      <img src="./../assets/loading.gif" alt="">
+    </div>
+  </div>
+</form>

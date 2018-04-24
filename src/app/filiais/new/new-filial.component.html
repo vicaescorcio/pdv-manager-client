@@ -10,7 +10,7 @@
     Adicionar outro
   </button>
 </div>
-<form [formGroup]="filialForm" (ngSubmit)="enviar(filialForm.value)">
+<form [formGroup]="filialForm" (ngSubmit)="edit? update():enviar()">
   <div class="form-row">
     <div class="form-group col-md-4">
       <label>Código:</label>
@@ -25,7 +25,7 @@
     <div class="form-group col-md-3">
       <label>CNPJ:</label>
       <input type="text" [ngClass]="{'red-border-class':!filialForm.controls['cc_ins_fed'].valid &&filialForm.controls['cc_ins_fed'].touched }"
-        [textMask]="{mask: mask_cnpj}" class="form-control" placeholder="xx.xxx/xxxx-xx" formControlName="cc_ins_fed">
+        [textMask]="{mask: mask_cnpj,guide:false}" class="form-control" placeholder="xx.xxx/xxxx-xx" formControlName="cc_ins_fed">
     </div>
   </div>
   <div class="form-row">
@@ -41,17 +41,17 @@
     </div>
     <div class="form-group col-md-2">
       <label>CNAE Fiscal:</label>
-      <input type="text" [textMask]="{mask: mask_cnae}" [ngClass]="{'red-border-class':!filialForm.controls['cc_cna_fis'].valid &&filialForm.controls['cc_cna_fis'].touched }"
+      <input type="text" [textMask]="{mask: mask_cnae,guide:false}" [ngClass]="{'red-border-class':!filialForm.controls['cc_cna_fis'].valid &&filialForm.controls['cc_cna_fis'].touched }"
         class="form-control" formControlName="cc_cna_fis" placeholder="">
     </div>
     <div class="form-group col-md-4">
       <label>Inscrição Estadual:</label>
-      <input type="text" [textMask]="{mask: mask_est}" [ngClass]="{'red-border-class':!filialForm.controls['cc_ins_est'].valid &&filialForm.controls['cc_ins_est'].touched }"
+      <input type="text" [textMask]="{mask: mask_est,guide:false}" [ngClass]="{'red-border-class':!filialForm.controls['cc_ins_est'].valid &&filialForm.controls['cc_ins_est'].touched }"
         class="form-control" formControlName="cc_ins_est" placeholder="">
     </div>
     <div class="form-group col-md-3">
       <label>Inscrição Municipal:</label>
-      <input type="text" [textMask]="{mask: mask_mun}" [ngClass]="{'red-border-class':!filialForm.controls['cc_ins_mun'].valid &&filialForm.controls['cc_ins_mun'].touched }"
+      <input type="text" [ngClass]="{'red-border-class':!filialForm.controls['cc_ins_mun'].valid &&filialForm.controls['cc_ins_mun'].touched }"
         class="form-control" formControlName="cc_ins_mun" placeholder="">
     </div>
   </div>
@@ -86,11 +86,11 @@
     <div class="form-group col-md-2">
       <label>Telefone:</label>
       <input type="text" [ngClass]="{'red-border-class':!filialForm.controls['tx_end_tel'].valid &&filialForm.controls['tx_end_tel'].touched }"
-        [textMask]="{mask: mask_tel}" class="form-control" formControlName="tx_end_tel" placeholder="(xx) xxxxx-xxxx">
+        [textMask]="{mask: mask_tel, guide:false}" class="form-control" formControlName="tx_end_tel" placeholder="(xx) xxxxx-xxxx">
     </div>
     <div class="form-group col-md-2">
       <label>Código do Município:</label>
-      <input type="text" [ngClass]="{'red-border-class':!filialForm.controls['cc_end_mun_cod'].valid &&filialForm.controls['cc_end_mun_cod'].touched }"
+      <input type="text"  [textMask]="{mask: mask_cod,guide:false}"[ngClass]="{'red-border-class':!filialForm.controls['cc_end_mun_cod'].valid &&filialForm.controls['cc_end_mun_cod'].touched }"
         class="form-control" formControlName="cc_end_mun_cod" placeholder="">
     </div>
     <div class="form-group col-md-3">

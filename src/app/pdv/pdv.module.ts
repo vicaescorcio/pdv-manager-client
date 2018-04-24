@@ -7,7 +7,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { PdvRoutingModule } from './pdv-routing.module';
 import { PdvsComponent } from './pdvs/pdvs.component';
 import { NewPdvComponent } from './new-pdv/new-pdv.component';
-import { EditPdvComponent } from './edit-pdv/edit-pdv.component';
 
 @NgModule({
   imports: [
@@ -19,6 +18,6 @@ import { EditPdvComponent } from './edit-pdv/edit-pdv.component';
   ],
   exports:[],
   providers:[PdvService],
-  declarations: [PdvsComponent, NewPdvComponent, EditPdvComponent]
+  declarations: [PdvsComponent, NewPdvComponent]
 })
 export class PdvModule { }

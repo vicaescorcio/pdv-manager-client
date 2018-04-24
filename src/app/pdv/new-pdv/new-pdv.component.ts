@@ -17,8 +17,6 @@ export class NewPdvComponent implements OnInit {
   sucesso: boolean = true;
   loading: boolean = false;
   server_error: string;
-  fit: any = this.buildFit();
-  fin_con: any = this.buildFinCon();
   pdvForm: FormGroup;
   filiais: Filial[];
   cc_pdv: any;
@@ -45,8 +43,6 @@ export class NewPdvComponent implements OnInit {
   }
   ngOnInit() {
     this.buildFil();
-    this.fin_con = this.buildFinCon();
-    this.fit = this.buildFit();
     this.route.params.subscribe(params => {
       this.cc_pdv = params["cc_pdv"];
       if (this.cc_pdv) {
@@ -87,7 +83,6 @@ export class NewPdvComponent implements OnInit {
             console.log(error);
             console.log(this.debug());
             this.server_error = error.error.message;
-            this.sucesso = false;
             this.loading = false;
           }
         );
@@ -116,20 +111,6 @@ export class NewPdvComponent implements OnInit {
         }
       );
 
-  }
-  buildFit() {
-    return {
-      O: "Outros",
-      T: "TEF",
-      P: "POS",
-      C: "Cheque"
-    };
-  }
-  buildFinCon() {
-    return {
-      V: "A vista",
-      P: "A Prazo"
-    };
   }
   buildFil() {
     return this.filiaisService.getFiliais(0, 50).subscribe(

@@ -1,4 +1,3 @@
-import { EditFilialComponent } from "./edit/edit-fiilial.component";
 import { NewFilialComponent } from "./new/new-filial.component";
 import { CanActivateViaAuthGuard } from "./../_guard/canactivateauth.guard";
 import { NgModule } from "@angular/core";
@@ -12,7 +11,7 @@ const routes: Routes = [
   },
   {
     path: "edit-filial/:cc_fil",
-    component: EditFilialComponent,
+    component: NewFilialComponent,
     canActivate: [CanActivateViaAuthGuard]
   }
 ];
