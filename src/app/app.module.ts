@@ -1,3 +1,4 @@
+import { EmpregadoModule } from './empregado/empregado.module';
 import { FinalizadoraModule } from './finalizadora/finalizadora.module';
 import { ProdutoModule } from './produto/produto.module';
 import { PdvModule } from './pdv/pdv.module';
@@ -13,9 +14,6 @@ import { AppComponent } from "./app.component";
 import { JwtInterceptor } from "./_helpers/jwt.interceptor";
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
-
-
-
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -29,7 +27,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ReactiveFormsModule,
     PdvModule,
     ProdutoModule,
-    FinalizadoraModule
+    FinalizadoraModule,
+    EmpregadoModule
   ],
   exports: [],
   providers: [

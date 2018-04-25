@@ -14,6 +14,11 @@ const routes: Routes = [
     path: "new-finalizadora",
     component: NewFinalizadoraComponent,
     canActivate: [CanActivateViaAuthGuard]
+  },
+  {
+    path: "edit-finalizadora/:cc_fin",
+    component: NewFinalizadoraComponent,
+    canActivate: [CanActivateViaAuthGuard]
   }
 ];
 

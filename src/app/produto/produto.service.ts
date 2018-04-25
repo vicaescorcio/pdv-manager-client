@@ -1,8 +1,43 @@
-import { Injectable } from '@angular/core';
+import { Produto } from './produto';
+import { Observable } from "rxjs/Observable";
+import { Page } from "./../shared/_models/page";
+import { AuthService } from "./../auth/auth.service";
+import { Router } from "@angular/router";
+import { Configuration } from "./../app.constants";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Injectable } from "@angular/core";
 
 @Injectable()
 export class ProdutoService {
+  constructor(
+    private _config: Configuration,
+    private router: Router,
+    private http: HttpClient,
+    private authService: AuthService
+  ) {}
 
-  constructor() { }
+  url: string = this._config.ServerWithApiUrl + "produto/";
 
+  getProdutos(page: number, size: number) {
+    let paginacao: string = `?page=${page}&size=${size}`;
+    return this.http.get<Page>(this.url + "pesquisa" + paginacao, {
+      headers: this._config.headers
+    });
+  }
+  getProduto(cc_psr: any) {
+    let pesquisa: string = `pesquisa?cc_fil=${cc_psr}`;
+    return this.http.get<Page>(this.url + pesquisa, {
+      headers: this._config.headers
+    });
+  }
+  createProduto(produto: Produto): Observable<Produto> {
+    return this.http.post<Produto>(this.url, produto, {
+      headers: this._config.headers
+    });
+  }
+  updateProduto(produto: Produto) {
+    return this.http.put<Produto>(this.url+ JSON.stringify(produto), {
+      headers: this._config.headers
+    });
+  }
 }

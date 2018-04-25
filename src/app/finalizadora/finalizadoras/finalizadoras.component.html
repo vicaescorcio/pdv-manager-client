@@ -10,7 +10,7 @@
       <p-column>
         <ng-template let-f="rowData" pTemplate="body">
           <button pButton type="button" class="tbutton" (click)="showDialog(f.cc_fin)" icon="fa-eye"></button>
-          <button pButton type="button" [routerLink]="['edit-finalizadora/',f.cc_fin]" class="tbutton ui-button-warning" icon="fa-edit"></button>
+          <button pButton type="button" [routerLink]="['/edit-finalizadora/',f.cc_fin]" class="tbutton ui-button-warning" icon="fa-edit"></button>
         </ng-template>
       </p-column>
     </p-dataTable>

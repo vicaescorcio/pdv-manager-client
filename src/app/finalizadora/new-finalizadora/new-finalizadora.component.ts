@@ -25,7 +25,7 @@ export class NewFinalizadoraComponent implements OnInit {
   fits: any ;
   fin_con: any; 
   recursos:any;
-  cc_finalizadora: any;
+  cc_fin: any;
   edit: boolean = false;
   finalizadora:Finalizadora;
   constructor(
@@ -58,6 +58,14 @@ export class NewFinalizadoraComponent implements OnInit {
     this.buildRec();
     this.fits = this.buildFit()
     this.fin_con = this.buildFinCon()
+    this.route.params.subscribe(params => {
+      this.cc_fin = params["cc_fin"];
+      if (this.cc_fin) {
+        this.edit = true;
+        console.log(this.edit)
+        this.setFilial();
+      }
+    });
   }
   buildFil() {
     return this.filiaisService.getFiliais(0, 50).subscribe(
@@ -103,5 +111,45 @@ export class NewFinalizadoraComponent implements OnInit {
         this.server_error=_error.error.message;
         this.loading = false;
       });
+  }
+
+  update() {
+    this.loading = true
+    if (this.finalizadoraForm.dirty && this.finalizadoraForm.valid) {
+      this.finalizadoraService
+        .updateFilial(this.finalizadoraForm.value)
+        .subscribe(
+          _authResult => {
+            this.loading = false;
+          },
+          error => {
+            console.log(error);
+            this.server_error = error.error.message;
+            this.loading = false;
+          }
+        );
+    }
+  }
+  setFilial() {
+      this.route.params.subscribe(params => {
+      this.finalizadoraService.getFinalizadora(params['cc_fin']).subscribe(
+        _page => {
+         this.finalizadora = _page.content[0] 
+         this.finalizadoraForm.patchValue({cc_fil: this.finalizadora.cc_fil },{ onlySelf: true });
+         this.finalizadoraForm.patchValue({cc_fin:this.finalizadora.cc_fin.toUpperCase() },{ onlySelf: true });
+         this.finalizadoraForm.patchValue({ds_fin:this.finalizadora.ds_fin.toUpperCase() },{ onlySelf: true }); 
+         this.finalizadoraForm.patchValue({cn_fin:this.finalizadora.cn_fin },{ onlySelf: true }); 
+         this.finalizadoraForm.patchValue({cc_fit:this.finalizadora.cc_fit.toUpperCase() },{ onlySelf: true }); 
+         this.finalizadoraForm.patchValue({cc_ger_tef:this.finalizadora.cc_ger_tef.toUpperCase() },{ onlySelf: true }); 
+         this.finalizadoraForm.patchValue({tx_cha_adq:this.finalizadora.tx_cha_adq.toUpperCase() },{ onlySelf: true }); 
+         this.finalizadoraForm.patchValue({cc_rec:this.finalizadora.cc_rec.toUpperCase() },{ onlySelf: true }); 
+         this.finalizadoraForm.patchValue({bl_rec:this.finalizadora.bl_rec},{ onlySelf: true }); 
+         this.finalizadoraForm.patchValue({cc_fin_con:this.finalizadora.cc_fin_con.toUpperCase()},{ onlySelf: true }); 
+        },
+        error => {
+          console.log(error);
+        }
+      );
+    });
   }
 }
