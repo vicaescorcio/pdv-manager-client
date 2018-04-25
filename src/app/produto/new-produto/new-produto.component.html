@@ -1,3 +1,177 @@
-<p>
-  new-produto works!
-</p>
+<h1>Novo Produto</h1>
+<hr>
+<div class="alert alert-danger" role="alert" *ngIf="server_error">
+    {{server_error}}
+    <br />
+</div>
+<div *ngIf="!sucesso" class="alert alert-success" role="alert">
+    Enviado com sucesso!
+    <button (click)="sucesso = true;" class="btn btn-success">
+        Adicionar outro
+    </button>
+</div>
+<form *ngIf="sucesso" [formGroup]="produtoForm" (ngSubmit)="edit? update():enviar()">
+    <h6>Geral</h6>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label>Filial:</label>
+            <select formControlName="cc_fil" [ngClass]="{'red-border-class':!produtoForm.controls['cc_fil'].valid && produtoForm.controls['cc_fil'].touched }"
+                class="form-control">
+                <option value="">Selecione</option>
+                <option *ngFor="let filial of filiais" [value]="filial.cc_fil">
+                    {{filial.nm_fil}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group col-md-2">
+            <label>Tipo:</label>
+            <select formControlName="cc_psr_ccl" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_ccl'].valid && produtoForm.controls['cc_psr_ccl'].touched }"
+                class="form-control">
+                <option value="">Selecione</option>
+                <option *ngFor="let type of tipo" [value]="type.value">
+                    {{tipo.codigo}}
+                </option>
+            </select>
+        </div>
+        <div class="form-group col-md-2">
+            <label>Código:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr'].valid &&produtoForm.controls['cc_psr'].touched }"
+                class="form-control" formControlName="cc_psr">
+        </div>
+        <div class="form-group col-md-5">
+            <label>Descrição:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['nm_psr'].valid &&produtoForm.controls['nm_psr'].touched }"
+                class="form-control" formControlName="nm_psr" placeholder="">
+        </div>
+    </div>
+    <hr>
+    <h6>Grupos</h6>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label>Unidade:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_cur'].valid &&produtoForm.controls['cc_psr_cur'].touched }"
+                class="form-control" formControlName="cc_psr_cur" placeholder="">
+        </div>
+        <div class="form-group col-md-3">
+            <label>Grupo:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_pst'].valid &&produtoForm.controls['cc_pst'].touched }"
+                class="form-control" formControlName="cc_pst" placeholder="">
+        </div>
+        <div class="form-group col-md-3">
+            <label>CFOP:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_cfo'].valid &&produtoForm.controls['cc_psr_cfo'].touched }"
+                class="form-control" formControlName="cc_psr_cfo" placeholder="">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-3">
+            <label>NCM:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_ncm'].valid &&produtoForm.controls['cc_psr_ncm'].touched }"
+                class="form-control" formControlName="cc_psr_ncm" placeholder="">
+        </div>
+        <div class="form-group col-md-3">
+            <label>CEST:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_ces'].valid &&produtoForm.controls['cc_psr_ces'].touched }"
+                class="form-control" formControlName="cc_psr_ces" placeholder="">
+        </div>
+
+        <div class="form-group col-md-3">
+            <label>Origem:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_ori'].valid &&produtoForm.controls['cc_psr_ori'].touched }"
+                class="form-control" formControlName="cc_psr_ori" placeholder="">
+        </div>
+    </div>
+    <hr>
+    <h6>Tributação</h6>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label>CST ICMS:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_cst_icm'].valid &&produtoForm.controls['cc_psr_cst_icm'].touched }"
+                class="form-control" formControlName="cc_psr_cst_icm" placeholder="">
+        </div>
+        <div class="form-group col-md-2">
+            <label>Alíquota ICMS:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['pc_psr_ali_icm'].valid &&produtoForm.controls['pc_psr_ali_icm'].touched }"
+                class="form-control" formControlName="pc_psr_ali_icm" placeholder="">
+        </div>
+        <div class="form-group col-md-2">
+            <label>Alíq Redução ICMS:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['pc_psr_red_icm'].valid &&produtoForm.controls['pc_psr_red_icm'].touched }"
+                class="form-control" formControlName="pc_psr_red_icm" placeholder="">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label>CST PIS:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_cst_pis'].valid &&produtoForm.controls['cc_psr_cst_pis'].touched }"
+                class="form-control" formControlName="cc_psr_cst_pis" placeholder="">
+        </div>
+        <div class="form-group col-md-2">
+            <label>Alíquota PIS:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['pc_psr_ali_pis'].valid &&produtoForm.controls['pc_psr_ali_pis'].touched }"
+                class="form-control" formControlName="pc_psr_ali_pis" placeholder="">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-2">
+            <label>CST COFINS:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_cst_cof'].valid &&produtoForm.controls['cc_psr_cst_cof'].touched }"
+                class="form-control" formControlName="cc_psr_cst_cof" placeholder="">
+        </div>
+        <div class="form-group col-md-2">
+            <label>Alíquota COFINS:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['pc_psr_ali_cof'].valid &&produtoForm.controls['pc_psr_ali_cof'].touched }"
+                class="form-control" formControlName="pc_psr_ali_cof" placeholder="">
+        </div>
+    </div>
+    <hr>
+    <h6>Garantia</h6>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label>Código Garantia:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_gar'].valid &&produtoForm.controls['cc_psr_gar'].touched }"
+                class="form-control" formControlName="cc_psr_gar" placeholder="">
+        </div>
+        <div class="form-group col-md-4">
+            <label>Código Serial 1:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_sg1'].valid &&produtoForm.controls['cc_psr_sg1'].touched }"
+                class="form-control" formControlName="cc_psr_sg1" placeholder="">
+        </div>
+        <div class="form-group col-md-4">
+            <label>Código Serial 2:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_sg2'].valid &&produtoForm.controls['cc_psr_sg2'].touched }"
+                class="form-control" formControlName="cc_psr_sg2" placeholder="">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label>Código Serial 3:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_sg3'].valid &&produtoForm.controls['cc_psr_sg3'].touched }"
+                class="form-control" formControlName="cc_psr_sg3" placeholder="">
+        </div>
+        <div class="form-group col-md-2">
+            <label>Exige EAN ?</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['bl_psr_ean'].valid &&produtoForm.controls['bl_psr_ean'].touched }"
+                class="form-control" formControlName="bl_psr_ean" placeholder="">
+        </div>
+        <div class="form-group col-md-2">
+            <label>Exige Serial ?</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['bl_psr_sr1'].valid &&produtoForm.controls['bl_psr_sr1'].touched }"
+                class="form-control" formControlName="bl_psr_sr1" placeholder="">
+        </div>
+        <div class="form-group col-md-2">
+            <label>Qtd Máx de Parc:</label>
+            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['qt_max_par'].valid &&produtoForm.controls['qt_max_par'].touched }"
+                class="form-control" formControlName="qt_max_par" placeholder="">
+        </div>
+    </div>
+    <hr>
+    <div class="form-group text-center">
+        <button type="submit" class="btn btn-success" [disabled]="!produtoForm.valid">
+            Enviar
+        </button>
+        <div *ngIf="loading;">
+            <img src="./../assets/loading.gif" alt="">
+        </div>
+    </div>
+</form>

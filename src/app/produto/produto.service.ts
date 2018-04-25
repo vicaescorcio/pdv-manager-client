@@ -40,4 +40,30 @@ export class ProdutoService {
       headers: this._config.headers
     });
   }
+  /*recursos auxiliares*/ 
+  getTipos(){
+    return this.http.get<Page>(this.url+'tipo',{
+      headers: this._config.headers
+    });
+  }
+  getOri(){
+    return this.http.get<Page>(this.url+'origem',{
+      headers: this._config.headers
+    });
+  }
+  getIcms(){
+    return this.http.get<Page>(this.url+'csticms',{
+      headers: this._config.headers
+    });
+  }
+  getCofins(){
+    return this.http.get<Page>(this.url+'cstcofins',{
+      headers: this._config.headers
+    });
+  }
+  getPis(){
+    return this.http.get<Page>(this.url+'cstpis',{
+      headers: this._config.headers
+    });
+  }
 }

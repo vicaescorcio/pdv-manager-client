@@ -14,7 +14,7 @@
   <div class="form-row">
     <div class="form-group col-md-4">
       <label>Filial:</label>
-      <select formControlName="cc_fil" [ngClass]="{'red-border-class':!pdvForm.controls['cc_fil'].valid && pdvForm.controls['cc_fil'].touched }"
+      <select  formControlName="cc_fil" [ngClass]="{'red-border-class':!pdvForm.controls['cc_fil'].valid && pdvForm.controls['cc_fil'].touched }"
         class="form-control">
         <option value="">Selecione</option>
         <option *ngFor="let filial of filiais" [value]="filial.cc_fil">
@@ -24,7 +24,7 @@
     </div>
     <div class="form-group col-md-4">
       <label>Código Pdv:</label>
-      <input type="text" [ngClass]="{'red-border-class':!pdvForm.controls['cc_pdv'].valid &&pdvForm.controls['cc_pdv'].touched }"
+      <input prod type="text" [ngClass]="{'red-border-class':!pdvForm.controls['cc_pdv'].valid &&pdvForm.controls['cc_pdv'].touched }"
         class="form-control" formControlName="cc_pdv">
     </div>
   </div>

@@ -1,8 +1,8 @@
+import { ProdutoForm } from './_directives/produto-form.directive';
 import { FiliaisModule } from './../filiais/filiais.module';
 import { FiliaisService } from './../filiais/filiais.service';
 import { UpperCaseText } from './_directives/text-transformer.directive';
 import { Masks } from './masks';
-import { UpperDirective } from './_directives/upper.directive';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AppComponent } from './../app.component';
 import { NgModule, Directive } from '@angular/core';
@@ -14,6 +14,7 @@ import {DataTableModule} from 'primeng/datatable';
 import { TextMaskModule } from 'angular2-text-mask';
 import {DialogModule} from 'primeng/dialog';
 
+
 @NgModule({
   imports: [
     CommonModule,
@@ -24,10 +25,10 @@ import {DialogModule} from 'primeng/dialog';
     DataTableModule,
     TextMaskModule,
     DialogModule  ],
-  declarations:[UpperDirective,UpperCaseText],
+  declarations:[UpperCaseText, ProdutoForm],
   providers:[Masks],
   exports:[ 
     ButtonModule,TextMaskModule,
-    SidebarModule, BrowserAnimationsModule, DataTableModule,UpperDirective, DialogModule, UpperCaseText ]
+    SidebarModule, BrowserAnimationsModule, DataTableModule, DialogModule, UpperCaseText, ProdutoForm ]
 })
 export class SharedModule { }
