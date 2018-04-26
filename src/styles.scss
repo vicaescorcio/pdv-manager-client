@@ -28,6 +28,14 @@ select:focus {
 h1{
   font-weight: 800;
 }
+form h6{
+  float: right;
+  color:grey;
+  font-weight: 800;
+}
+form hr{
+  margin-bottom: 6px;
+}
 
 .container {
   margin-top: 90px !important;
@@ -81,3 +89,4 @@ button{
        font-size: 30px;
    }
 }
+

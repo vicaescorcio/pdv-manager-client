@@ -18,24 +18,24 @@ export class EmpregadoService {
 
   url: string = this._config.ServerWithApiUrl + "empregado/";
 
-  getProdutos(page: number, size: number) {
+  getEmpregados(page: number, size: number) {
     let paginacao: string = `?page=${page}&size=${size}`;
     return this.http.get<Page>(this.url + "pesquisa" + paginacao, {
       headers: this._config.headers
     });
   }
-  getProduto(cc_emp: any) {
+  getEmpregado(cc_emp: any) {
     let pesquisa: string = `pesquisa?cc_fil=${cc_emp}`;
     return this.http.get<Page>(this.url + pesquisa, {
       headers: this._config.headers
     });
   }
-  createProduto(empregado: Empregado): Observable<Empregado> {
+  createEmpregado(empregado: Empregado): Observable<Empregado> {
     return this.http.post<Empregado>(this.url, empregado, {
       headers: this._config.headers
     });
   }
-  updateProduto(empregado: Empregado) {
+  updateEmpregado(empregado: Empregado) {
     return this.http.put<Empregado>(this.url+ JSON.stringify(empregado), {
       headers: this._config.headers
     });

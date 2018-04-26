@@ -1,0 +1,71 @@
+<h1>Novo Empregado</h1>
+<hr>
+<div class="alert alert-danger" role="alert" *ngIf="server_error">
+  {{server_error}}
+  <br />
+</div>
+<div *ngIf="!sucesso" class="alert alert-success" role="alert">
+  Enviado com sucesso!
+  <button (click)="sucesso = true;" class="btn btn-success">
+    Adicionar outro
+  </button>
+</div>
+<form *ngIf="sucesso" [formGroup]="empregadoForm" (ngSubmit)="edit?update():enviar()">
+  <h6>Geral</h6>
+  <div class="form-row">
+    <div class="form-group col-md-3">
+      <label>Filial:</label>
+      <select formControlName="cc_fil" [ngClass]="{'red-border-class':!empregadoForm.controls['cc_fil'].valid && empregadoForm.controls['cc_fil'].touched }"
+        class="form-control">
+        <option value="">Selecione</option>
+        <option *ngFor="let filial of filiais" [value]="filial.cc_fil">
+          {{filial.nm_fil}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-md-2">
+      <label>Permissão:</label>
+      <input type="text" [ngClass]="{'red-border-class':!empregadoForm.controls['cc_per'].valid &&empregadoForm.controls['cc_per'].touched }"
+        class="form-control" formControlName="cc_per">
+    </div>
+    <div class="form-group col-md-2">
+      <label>Código:</label>
+      <input type="text" [ngClass]="{'red-border-class':!empregadoForm.controls['cc_emp'].valid &&empregadoForm.controls['cc_emp'].touched }"
+        class="form-control" formControlName="cc_emp">
+    </div>
+    <div class="form-group col-md-5">
+      <label>Nome:</label>
+      <input type="text" [ngClass]="{'red-border-class':!empregadoForm.controls['nm_emp'].valid &&empregadoForm.controls['nm_emp'].touched }"
+        class="form-control" formControlName="nm_emp" placeholder="">
+    </div>
+    <div class="form-group col-md-2">
+      <label>Pw Emp Log</label>
+      <input type="text" [ngClass]="{'red-border-class':!empregadoForm.controls['pw_emp_log'].valid &&empregadoForm.controls['pw_emp_log'].touched }"
+        class="form-control" formControlName="pw_emp_log" placeholder="">
+
+    </div>
+    <div class="form-group col-md-2">
+      <label>Bl emp log</label>
+      <p-checkbox formControlName="bl_emp_log" binary="true"></p-checkbox>
+    </div>
+    <div class="form-group col-md-3">
+      <label>Início:</label>
+      <input type="text" [ngClass]="{'red-border-class':!empregadoForm.controls['dt_ini'].valid &&empregadoForm.controls['dt_ini'].touched }"
+        class="form-control" formControlName="dt_ini" placeholder="">
+    </div>
+    <div class="form-group col-md-3">
+      <label>Fim:</label>
+      <input type="text" [ngClass]="{'red-border-class':!empregadoForm.controls['dt_fim'].valid &&empregadoForm.controls['dt_fim'].touched }"
+        class="form-control" formControlName="dt_fim" placeholder="">
+    </div>
+  </div>
+  <hr>
+  <div class="form-group text-center">
+    <button type="submit" class="btn btn-success" [disabled]="!empregadoForm.valid">
+      Enviar
+    </button>
+    <div *ngIf="loading;">
+      <img src="./../assets/loading.gif" alt="">
+    </div>
+  </div>
+</form>

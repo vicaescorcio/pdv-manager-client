@@ -1,0 +1,22 @@
+<div class="ui-g">
+    <div class="ui-g-12">
+      <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+        <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+        <input #gb type="text" pInputText size="50" placeholder="  Pesquisar">
+      </div>
+      <p-dataTable [value]="empregados" [loading]="loading" loadingIcon="fa-spinner" [responsive]="true" [paginator]="true" [rows]="rows"  [globalFilter]="gb" #dt
+        [first]="first" [scrollable]="true" [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,20]">
+        <p-column field="cc_fil" header="Filial"></p-column>
+        <p-column field="cc_emp" header="Código"></p-column>
+        <p-column field="nm_emp" header="Nome"></p-column>
+        <p-column field="cc_per" header="Permissão"></p-column>
+        <p-column>
+          <ng-template let-e="rowData" pTemplate="body">
+            <button pButton type="button" class="tbutton" icon="fa-eye"></button>
+            <button pButton type="button" [routerLink]="['/edit-empregado/',e.cc_emp]" class="tbutton ui-button-warning" icon="fa-edit"></button>
+          </ng-template>
+        </p-column>
+      </p-dataTable>
+      <button pButton type="button" [routerLink]="['/new-empregado']" class="add-button ui-button-success" icon="fa-plus"></button>
+    </div>
+  </div>
