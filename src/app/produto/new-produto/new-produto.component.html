@@ -10,7 +10,7 @@
         Adicionar outro
     </button>
 </div>
-<form *ngIf="sucesso" [formGroup]="produtoForm" (ngSubmit)="edit? update():enviar()">
+<form *ngIf="sucesso" [formGroup]="produtoForm" (ngSubmit)="edit?update():enviar()">
     <h6>Geral</h6>
     <div class="form-row">
         <div class="form-group col-md-3">
@@ -28,8 +28,8 @@
             <select formControlName="cc_psr_ccl" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_ccl'].valid && produtoForm.controls['cc_psr_ccl'].touched }"
                 class="form-control">
                 <option value="">Selecione</option>
-                <option *ngFor="let type of tipo" [value]="type.value">
-                    {{tipo.codigo}}
+                <option *ngFor="let type of tipo" [value]="type.cc_psr_ccl">
+                    {{type.nm_cc_psr_ccl}}
                 </option>
             </select>
         </div>
@@ -42,6 +42,14 @@
             <label>Descrição:</label>
             <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['nm_psr'].valid &&produtoForm.controls['nm_psr'].touched }"
                 class="form-control" formControlName="nm_psr" placeholder="">
+        </div>
+        <div class="form-group col-md-2">
+            <label>Exige EAN ?</label>
+            <p-checkbox formControlName="bl_psr_ean" binary="true"></p-checkbox>
+        </div>
+        <div class="form-group col-md-2">
+            <label>Exige Serial ?</label>
+            <p-checkbox formControlName="bl_psr_sr1" binary="true"></p-checkbox>
         </div>
     </div>
     <hr>
@@ -75,57 +83,77 @@
                 class="form-control" formControlName="cc_psr_ces" placeholder="">
         </div>
 
-        <div class="form-group col-md-3">
+        <div class="form-group col-md-6">
             <label>Origem:</label>
-            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_ori'].valid &&produtoForm.controls['cc_psr_ori'].touched }"
-                class="form-control" formControlName="cc_psr_ori" placeholder="">
+            <select formControlName="cc_psr_ori" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_ori'].valid && produtoForm.controls['cc_psr_ori'].touched }"
+                class="form-control">
+                <option value="">Selecione</option>
+                <option *ngFor="let origem of origens" [value]="origem.cc_psr_ori">
+                    {{origem.cc_psr_ori}} - {{origem.nm_cc_psr_ori}}
+                </option>
+            </select>
         </div>
     </div>
     <hr>
     <h6>Tributação</h6>
     <div class="form-row">
-        <div class="form-group col-md-2">
+        <div class="form-group col-md-7">
             <label>CST ICMS:</label>
-            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_cst_icm'].valid &&produtoForm.controls['cc_psr_cst_icm'].touched }"
-                class="form-control" formControlName="cc_psr_cst_icm" placeholder="">
+            <select formControlName="cc_psr_cst_icm" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_cst_icm'].valid && produtoForm.controls['cc_psr_cst_icm'].touched }"
+                class="form-control">
+                <option value="">Selecione</option>
+                <option *ngFor="let icms of cstIcms" [value]="icms.cc_psr_cst_icms">
+                    {{icms.cc_psr_cst_icms}} - {{icms.nm_cc_psr_cst_icms}}
+                </option>
+            </select>
         </div>
         <div class="form-group col-md-2">
             <label>Alíquota ICMS:</label>
-            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['pc_psr_ali_icm'].valid &&produtoForm.controls['pc_psr_ali_icm'].touched }"
+            <input type="text" [textMask]="{mask: valor}" [ngClass]="{'red-border-class':!produtoForm.controls['pc_psr_ali_icm'].valid &&produtoForm.controls['pc_psr_ali_icm'].touched }"
                 class="form-control" formControlName="pc_psr_ali_icm" placeholder="">
         </div>
         <div class="form-group col-md-2">
             <label>Alíq Redução ICMS:</label>
-            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['pc_psr_red_icm'].valid &&produtoForm.controls['pc_psr_red_icm'].touched }"
+            <input type="text" [textMask]="{mask: valor}" [ngClass]="{'red-border-class':!produtoForm.controls['pc_psr_red_icm'].valid &&produtoForm.controls['pc_psr_red_icm'].touched }"
                 class="form-control" formControlName="pc_psr_red_icm" placeholder="">
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-md-2">
+        <div class="form-group col-md-7">
             <label>CST PIS:</label>
-            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_cst_pis'].valid &&produtoForm.controls['cc_psr_cst_pis'].touched }"
-                class="form-control" formControlName="cc_psr_cst_pis" placeholder="">
+            <select formControlName="cc_psr_cst_pis" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_cst_pis'].valid && produtoForm.controls['cc_psr_cst_pis'].touched }"
+                class="form-control">
+                <option value="">Selecione</option>
+                <option *ngFor="let pis of cstPis" [value]="pis.cc_psr_cst_pis">
+                    {{pis.cc_psr_cst_pis}} - {{pis.nm_cc_psr_cst_pis}}
+                </option>
+            </select>
         </div>
         <div class="form-group col-md-2">
             <label>Alíquota PIS:</label>
-            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['pc_psr_ali_pis'].valid &&produtoForm.controls['pc_psr_ali_pis'].touched }"
+            <input type="text" [textMask]="{mask: valor}" [ngClass]="{'red-border-class':!produtoForm.controls['pc_psr_ali_pis'].valid &&produtoForm.controls['pc_psr_ali_pis'].touched }"
                 class="form-control" formControlName="pc_psr_ali_pis" placeholder="">
         </div>
     </div>
     <div class="form-row">
-        <div class="form-group col-md-2">
+        <div class="form-group col-md-7">
             <label>CST COFINS:</label>
-            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_cst_cof'].valid &&produtoForm.controls['cc_psr_cst_cof'].touched }"
-                class="form-control" formControlName="cc_psr_cst_cof" placeholder="">
+            <select formControlName="cc_psr_cst_cof" [ngClass]="{'red-border-class':!produtoForm.controls['cc_psr_cst_cof'].valid && produtoForm.controls['cc_psr_cst_cof'].touched }"
+                class="form-control">
+                <option value="">Selecione</option>
+                <option *ngFor="let cof of cstCof" [value]="cof.cc_psr_cst_cofins">
+                    {{cof.cc_psr_cst_cofins}} - {{cof.nm_cc_psr_cst_cofins}}
+                </option>
+            </select>
         </div>
         <div class="form-group col-md-2">
             <label>Alíquota COFINS:</label>
-            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['pc_psr_ali_cof'].valid &&produtoForm.controls['pc_psr_ali_cof'].touched }"
+            <input type="text" [textMask]="{mask: valor}" [ngClass]="{'red-border-class':!produtoForm.controls['pc_psr_ali_cof'].valid &&produtoForm.controls['pc_psr_ali_cof'].touched }"
                 class="form-control" formControlName="pc_psr_ali_cof" placeholder="">
         </div>
     </div>
     <hr>
-    <h6>Garantia</h6>
+    <h6>Garantia/Pagamento</h6>
     <div class="form-row">
         <div class="form-group col-md-4">
             <label>Código Garantia:</label>
@@ -150,18 +178,8 @@
                 class="form-control" formControlName="cc_psr_sg3" placeholder="">
         </div>
         <div class="form-group col-md-2">
-            <label>Exige EAN ?</label>
-            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['bl_psr_ean'].valid &&produtoForm.controls['bl_psr_ean'].touched }"
-                class="form-control" formControlName="bl_psr_ean" placeholder="">
-        </div>
-        <div class="form-group col-md-2">
-            <label>Exige Serial ?</label>
-            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['bl_psr_sr1'].valid &&produtoForm.controls['bl_psr_sr1'].touched }"
-                class="form-control" formControlName="bl_psr_sr1" placeholder="">
-        </div>
-        <div class="form-group col-md-2">
             <label>Qtd Máx de Parc:</label>
-            <input type="text" [ngClass]="{'red-border-class':!produtoForm.controls['qt_max_par'].valid &&produtoForm.controls['qt_max_par'].touched }"
+            <input type="number" [ngClass]="{'red-border-class':!produtoForm.controls['qt_max_par'].valid &&produtoForm.controls['qt_max_par'].touched }"
                 class="form-control" formControlName="qt_max_par" placeholder="">
         </div>
     </div>

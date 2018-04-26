@@ -1,6 +1,10 @@
 <div class="ui-g">
   <div class="ui-g-12">
-    <p-dataTable [value]="produtos" [loading]="loading" loadingIcon="fa-spinner" [responsive]="true" [paginator]="true" [rows]="rows"
+    <div class="ui-widget-header" style="padding:4px 10px;border-bottom: 0 none">
+      <i class="fa fa-search" style="margin:4px 4px 0 0"></i>
+      <input #gb type="text" pInputText size="50" placeholder="  Pesquisar">
+    </div>
+    <p-dataTable [value]="produtos" [loading]="loading" loadingIcon="fa-spinner" [responsive]="true" [paginator]="true" [rows]="rows"  [globalFilter]="gb" #dt
       [first]="first" [scrollable]="true" [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,20]">
       <p-column field="cc_fil" header="Filial"></p-column>
       <p-column field="cc_pst" header="Código"></p-column>
@@ -13,6 +17,6 @@
         </ng-template>
       </p-column>
     </p-dataTable>
-    <button pButton type="button" [routerLink]="['/new-produto']"  class="add-button ui-button-success" icon="fa-plus"></button>
+    <button pButton type="button" [routerLink]="['/new-produto']" class="add-button ui-button-success" icon="fa-plus"></button>
   </div>
 </div>

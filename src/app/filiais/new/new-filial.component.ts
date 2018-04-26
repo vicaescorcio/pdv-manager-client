@@ -74,7 +74,6 @@ export class NewFilialComponent implements OnInit {
     });
   }
   enviar() {
-    console.log("enviar!")
     this.formatFilial()
     if (this.filialForm.dirty && this.filialForm.valid) {
       this.sub = this.filialService.createFilial(this.filialForm.value).subscribe(

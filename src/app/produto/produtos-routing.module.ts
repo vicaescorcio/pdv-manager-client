@@ -16,6 +16,12 @@ const routes: Routes = [
     component:NewProdutoComponent,
     canActivate: [CanActivateViaAuthGuard]
 
+  },
+  { 
+    path:'edit-produto/:cc_psr',
+    component:NewProdutoComponent,
+    canActivate: [CanActivateViaAuthGuard]
+
   }
 ];
 

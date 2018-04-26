@@ -20,7 +20,7 @@ export class ProdutoForm {
     // THIS WILL BE FIRED IF SOMEONE CHANGES THE INPUT
  @HostListener('keyup', ['$event'])
     inputChanged(event) {
-    if (event.target.value) {
+      if (event.target.value) {
         console.log('not empty!');
         }
       else {}
