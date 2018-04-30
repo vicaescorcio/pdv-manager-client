@@ -1,4 +1,4 @@
-import { AuthService } from './../auth/auth.service';
+import { AuthService } from './../../auth/auth.service';
 import { MenuItem } from 'primeng/api';
 import { Component, OnInit } from '@angular/core';
 

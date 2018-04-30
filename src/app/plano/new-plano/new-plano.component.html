@@ -1,0 +1,65 @@
+<h1>Novo Plano</h1>
+<hr>
+<div class="alert alert-danger" role="alert" *ngIf="server_error">
+  {{server_error}}
+  <br />
+</div>
+<div *ngIf="!sucesso" class="alert alert-success" role="alert">
+  Enviado com sucesso!
+  <button (click)="sucesso = true;" class="btn btn-success">
+    Adicionar outro
+  </button>
+</div>
+<form *ngIf="sucesso" [formGroup]="planoForm" (ngSubmit)="edit? update():enviar()">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label>Filial:</label>
+      <select  formControlName="cc_fil" [ngClass]="{'red-border-class':!planoForm.controls['cc_fil'].valid && planoForm.controls['cc_fil'].touched }"
+        class="form-control">
+        <option value="">Selecione</option>
+        <option *ngFor="let filial of filiais" [value]="filial.cc_fil">
+          {{filial.nm_fil}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label>Código Plano:</label>
+      <input prod type="text" [ngClass]="{'red-border-class':!planoForm.controls['cc_pla'].valid &&planoForm.controls['cc_pla'].touched }"
+        class="form-control" formControlName="cc_pla">
+    </div>
+    <div class="form-group col-md-4">
+      <label>Prazo:</label>
+      <select  formControlName="cc_prz" [ngClass]="{'red-border-class':!planoForm.controls['cc_prz'].valid && planoForm.controls['cc_prz'].touched }"
+      class="form-control">
+      <option value="">Selecione</option>
+      <option *ngFor="let prazo of prazos" [value]="prazo.qt_prz">
+        {{prazo.qt_prz}}
+      </option>
+    </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label>Finalizadora:</label>
+      <select  formControlName="cc_fin" [ngClass]="{'red-border-class':!planoForm.controls['cc_fin'].valid && planoForm.controls['cc_fin'].touched }"
+      class="form-control">
+      <option value="">Selecione</option>
+      <option *ngFor="let fin of fins" [value]="fin.cc_fin">
+        {{fin.ds_fin}}
+      </option>
+    </select>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label>Tipo:</label>
+      <input prod type="text" [ngClass]="{'red-border-class':!planoForm.controls['pc_cus_fin'].valid &&planoForm.controls['pc_cus_fin'].touched }"
+        class="form-control" formControlName="pc_cus_fin">
+    </div>
+  </div>
+  <hr>
+  <div class="form-group text-center">
+    <button type="submit" class="btn btn-success" [disabled]="!planoForm.valid">
+      Enviar
+    </button>
+    <div *ngIf="loading;"> <img src="./../assets/loading.gif" alt=""></div>
+  </div>
+</form>

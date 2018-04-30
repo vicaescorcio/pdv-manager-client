@@ -1,10 +1,12 @@
+import { PlanoModule } from './plano/plano.module';
+import { AppShellModule } from './_helpers/app-shell/app-shell.module';
 import { EmpregadoModule } from './empregado/empregado.module';
 import { FinalizadoraModule } from './finalizadora/finalizadora.module';
 import { ProdutoModule } from './produto/produto.module';
 import { PdvModule } from './pdv/pdv.module';
 import { CanActivateViaAuthGuard } from "./_guard/canactivateauth.guard";
 import { AuthModule } from "./auth/auth.module";
-import { AppShellModule } from "./app-shell/app-shell.module";
+
 import { FiliaisModule } from "./filiais/filiais.module";
 import { BrowserModule } from "@angular/platform-browser";
 import { NgModule } from "@angular/core";
@@ -30,7 +32,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     PdvModule,
     ProdutoModule,
     FinalizadoraModule,
-    EmpregadoModule
+    EmpregadoModule,
+    PlanoModule
   ],
   exports: [],
   providers: [
