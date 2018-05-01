@@ -1,0 +1,48 @@
+<h1>Novo POS</h1>
+<hr>
+<div class="alert alert-danger" role="alert" *ngIf="server_error">
+  {{server_error}}
+  <br />
+</div>
+<div *ngIf="!sucesso" class="alert alert-success" role="alert">
+  Enviado com sucesso!
+  <button (click)="sucesso = true;" class="btn btn-success">
+    Adicionar outro
+  </button>
+</div>
+<form *ngIf="sucesso" [formGroup]="posForm" (ngSubmit)="edit? update():enviar()">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label>Filial:</label>
+      <select  formControlName="cc_fil" [ngClass]="{'red-border-class':!posForm.controls['cc_fil'].valid && posForm.controls['cc_fil'].touched }"
+        class="form-control">
+        <option value="">Selecione</option>
+        <option *ngFor="let filial of filiais" [value]="filial.cc_fil">
+          {{filial.nm_fil}}
+        </option>
+      </select>
+    </div>
+    <div class="form-group col-md-4">
+      <label>POS:</label>
+      <input type="text" [ngClass]="{'red-border-class':!posForm.controls['ds_pos'].valid &&posForm.controls['ds_pos'].touched }"
+        class="form-control" formControlName="ds_pos">
+    </div>
+    <div class="form-group col-md-4">
+      <label>Número Serial:</label>
+      <input type="text" [ngClass]="{'red-border-class':!posForm.controls['cc_num_ser'].valid &&posForm.controls['cc_num_ser'].touched }"
+        class="form-control" formControlName="cc_num_ser">
+    </div>
+    <div class="form-group col-md-4">
+      <label>Adquirente:</label>
+      <input type="text" [ngClass]="{'red-border-class':!posForm.controls['tx_cha_adq'].valid &&posForm.controls['tx_cha_adq'].touched }"
+        class="form-control" formControlName="tx_cha_adq">
+    </div>
+  </div>
+  <hr>
+  <div class="form-group text-center">
+    <button type="submit" class="btn btn-success" [disabled]="!posForm.valid">
+      Enviar
+    </button>
+    <div *ngIf="loading;"> <img src="./../assets/loading.gif" alt=""></div>
+  </div>
+</form>

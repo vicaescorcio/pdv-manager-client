@@ -1,3 +1,7 @@
+import { ParametroModule } from './parametro/parametro.module';
+import { RecursoModule } from './recurso/recurso.module';
+import { BandeiraModule } from './bandeira/bandeira.module';
+import { PosModule } from './pos/pos.module';
 import { PlanoModule } from './plano/plano.module';
 import { AppShellModule } from './_helpers/app-shell/app-shell.module';
 import { EmpregadoModule } from './empregado/empregado.module';
@@ -33,7 +37,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     ProdutoModule,
     FinalizadoraModule,
     EmpregadoModule,
-    PlanoModule
+    PlanoModule,
+    PosModule,
+    BandeiraModule,
+    RecursoModule,
+    ParametroModule
+
   ],
   exports: [],
   providers: [
