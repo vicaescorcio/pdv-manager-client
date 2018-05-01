@@ -1,3 +1,16 @@
-<p>
-  bandeiras works!
-</p>
+<div class="ui-g">
+  <div class="ui-g-12">
+    <p-dataTable [value]="bandeiras" [loading]="loading" loadingIcon="fa-spinner" [responsive]="true" [paginator]="true" [rows]="rows"
+      [first]="first" [scrollable]="true" [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,20]">
+      <p-column field="cc_ban" header="Código"></p-column>
+      <p-column field="nm_ban" header="Nome"></p-column>
+      <p-column>
+        <ng-template let-b="rowData" pTemplate="body">
+          <button pButton type="button" class="tbutton" icon="fa-eye"></button>
+          <button pButton type="button" [routerLink]="['/edit-bandeira/',b.cc_ban]" class="tbutton ui-button-warning" icon="fa-edit"></button>
+        </ng-template>
+      </p-column>
+    </p-dataTable>
+    <button pButton type="button" [routerLink]="['/new-bandeira']"  class="add-button ui-button-success" icon="fa-plus"></button>
+  </div>
+</div>

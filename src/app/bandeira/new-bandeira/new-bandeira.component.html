@@ -1,0 +1,33 @@
+<h1>Nova Bandeira</h1>
+<hr>
+<div class="alert alert-danger" role="alert" *ngIf="server_error">
+  {{server_error}}
+  <br />
+</div>
+<div *ngIf="!sucesso" class="alert alert-success" role="alert">
+  Enviado com sucesso!
+  <button (click)="sucesso = true;" class="btn btn-success">
+    Adicionar outro
+  </button>
+</div>
+<form *ngIf="sucesso" [formGroup]="bandeiraForm" (ngSubmit)="edit? update():enviar()">
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label>Filial:</label>
+      <input prod type="text" [ngClass]="{'red-border-class':!bandeiraForm.controls['cc_ban'].valid &&bandeiraForm.controls['cc_ban'].touched }"
+      class="form-control" formControlName="cc_ban">  
+    </div>
+    <div class="form-group col-md-4">
+      <label>Nome:</label>
+      <input prod type="text" [ngClass]="{'red-border-class':!bandeiraForm.controls['nm_ban'].valid &&bandeiraForm.controls['nm_ban'].touched }"
+        class="form-control" formControlName="nm_ban">
+    </div>
+  </div>
+  <hr>
+  <div class="form-group text-center">
+    <button type="submit" class="btn btn-success" [disabled]="!bandeiraForm.valid">
+      Enviar
+    </button>
+    <div *ngIf="loading;"> <img src="./../assets/loading.gif" alt=""></div>
+  </div>
+</form>
