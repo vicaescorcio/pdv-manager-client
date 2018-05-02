@@ -13,7 +13,7 @@
 <form *ngIf="sucesso" [formGroup]="bandeiraForm" (ngSubmit)="edit? update():enviar()">
   <div class="form-row">
     <div class="form-group col-md-4">
-      <label>Filial:</label>
+      <label>Código:</label>
       <input prod type="text" [ngClass]="{'red-border-class':!bandeiraForm.controls['cc_ban'].valid &&bandeiraForm.controls['cc_ban'].touched }"
       class="form-control" formControlName="cc_ban">  
     </div>

@@ -26,7 +26,7 @@ export class BandeiraService {
   }
 
   updateBandeira(bandeira: Bandeira) {
-    return this.http.put<Bandeira>(this.url+ JSON.stringify(bandeira), {
+    return this.http.put<Bandeira>(this.url+bandeira.cc_ban, JSON.stringify(bandeira), {
       headers: this._config.headers
     });
   }

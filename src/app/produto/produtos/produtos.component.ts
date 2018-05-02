@@ -18,7 +18,7 @@ export class ProdutosComponent implements OnInit {
   lazy: boolean =true;
   display: boolean = false;
   filial :any;
-  loading = true;
+  loading = true; true;
   ngOnInit() {this.getAll(0, 2); }
 
   getAll(page: number, size: number) {
@@ -45,5 +45,8 @@ export class ProdutosComponent implements OnInit {
       this.getAll(event.first/event.rows, event.rows); 
       event.first = true;
     }
+  }
+  search(){
+    
   }
 }

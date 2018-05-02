@@ -36,7 +36,7 @@ export class PlanoService {
     });
   }
   updatePlano(plano: Plano) {
-    return this.http.put<Plano>(this.url+ JSON.stringify(plano), {
+    return this.http.put<Plano>(this.url + plano.cc_pla, JSON.stringify(plano), {
       headers: this._config.headers
     });
   }

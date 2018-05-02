@@ -14,7 +14,9 @@ import {SidebarModule} from 'primeng/sidebar';
 import {DataTableModule} from 'primeng/datatable';
 import { TextMaskModule } from 'angular2-text-mask';
 import {DialogModule} from 'primeng/dialog';
-
+import {TooltipModule} from 'primeng/tooltip';
+import {MessagesModule} from 'primeng/messages';
+import {MessageModule} from 'primeng/message';
 
 @NgModule({
   imports: [
@@ -25,12 +27,12 @@ import {DialogModule} from 'primeng/dialog';
     BrowserAnimationsModule,
     DataTableModule,
     TextMaskModule,
-    DialogModule, CheckboxModule  ],
+    DialogModule, CheckboxModule, TooltipModule, MessageModule, MessagesModule ],
 
   declarations:[UpperCaseText, ProdutoForm],
   providers:[Masks],
   exports:[ 
     ButtonModule,TextMaskModule,
-    SidebarModule, BrowserAnimationsModule, DataTableModule, DialogModule, UpperCaseText, ProdutoForm, CheckboxModule ]
+    SidebarModule, BrowserAnimationsModule,TooltipModule, MessageModule, MessagesModule , DataTableModule, DialogModule, UpperCaseText, ProdutoForm, CheckboxModule ]
 })
 export class SharedModule { }

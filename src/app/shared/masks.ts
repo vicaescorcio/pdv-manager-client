@@ -17,6 +17,7 @@ export class Masks {
         requireDecimal:true,
         includeThousandsSeparator: false,
         decimalSymbol:',',
+        allowLeadingZeroes:true
 
          // This will put the dollar sign at the end, with a space.
       })

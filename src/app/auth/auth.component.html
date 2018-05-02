@@ -1,7 +1,7 @@
 <div id="login-container">
     <h2>Acesso</h2>
+    <p-message *ngIf="error" text="{{error}}" severity="error" closable='true'></p-message>
     <form name="form" (ngSubmit)="f.form.valid && login()" #f="ngForm" novalidate>
-
         <div class="row">
             <div class="form-group col col-md-12" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
                 <label for="username">Login</label>

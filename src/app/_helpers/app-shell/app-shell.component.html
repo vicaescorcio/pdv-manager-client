@@ -1,13 +1,8 @@
 <nav class="navbar fixed-top navbar-light">
     <a class="navbar-brand brand-logo" href="#">
-        <img src="../../assets/logo-unigex.png" width="150" height="auto" class="d-inline-block  align-top" alt="WebGex">
+        <img src="./../assets/logo-unigex.png" width="150" height="auto" class="d-inline-block  align-top" alt="WebGex">
     </a>
     <button *ngIf="show" class="navbar-toggle ui-button-success" type="text" (click)="logout()" icon="fa-sign-out" pButton></button>
-    <p-sidebar [(visible)]="display">
-        <h1>Opções</h1>
-        <a (click)="logout()">
-            <i class="fa fa-sign-out"></i>Logout</a>
-    </p-sidebar>
 </nav>
 <div *ngIf="show" class="left">
     <div class="menu">
@@ -24,22 +19,25 @@
         <div [routerLink]="['empregados']" class="item">
             <i class="fa fa-users"></i>
             Empregados</div>
-        <div [routerLink]="['finalizadoras']" class="item">
-            <i class="fa fa-credit-card"></i>
-            Finalizadoras
+        <div (click)= 'showFinan()' class="finan item">
+            <i class="fa fa-dollar"></i>
+            Financeiro
+            <i class="{{rotation}}"></i>
         </div>
-        <div [routerLink]="['poss']" class="item active">
-            <i class="fa fa-credit-card"></i>
+        <div class= "financeiro" *ngIf="financeiro" [@enterAnimation]>
+            <div [routerLink]="['finalizadoras']" class="fin item">
+                <i class="fa fa-check-square"></i>
+                Finalizadoras</div>
+            <div [routerLink]="['poss']" class="fin item">
+                <i class="fa fa-calculator"></i>
                 P O S 's</div>
-            <div [routerLink]="['bandeiras']" class="item">
-                <i class="fa fa-cc-visa"></i>
+            <div [routerLink]="['bandeiras']" class="fin item">
+                <i class="fa fa-credit-card"></i>
                 Bandeiras</div>
-            <div [routerLink]="['bandeiras']" class="item">
+            <div [routerLink]="['planos']" class="fin item">
                 <i class="fa fa-calendar"></i>
                 Planos</div>
-            <div [routerLink]="['finalizadoras']" class="item">
-                <i class="fa fa-credit-card"></i>
-                Finalizadoras</div>
+        </div>
     </div>
 
 </div>

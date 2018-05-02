@@ -7,7 +7,7 @@
     <p-dataTable [value]="produtos" [loading]="loading" loadingIcon="fa-spinner" [responsive]="true" [paginator]="true" [rows]="rows"  [globalFilter]="gb" #dt
       [first]="first" [scrollable]="true" [lazy]="true" (onLazyLoad)="loadData($event)" [totalRecords]="totalRecords" [rowsPerPageOptions]="[5,10,20]">
       <p-column field="cc_fil" header="Filial"></p-column>
-      <p-column field="cc_pst" header="Código"></p-column>
+      <p-column field="cc_psr" header="Código"></p-column>
       <p-column field="cc_psr_ccl" header="Tipo"></p-column>
       <p-column field="nm_psr" header="Descrição"></p-column>
       <p-column>

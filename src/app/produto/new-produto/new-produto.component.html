@@ -179,7 +179,7 @@
         </div>
         <div class="form-group col-md-2">
             <label>Qtd Máx de Parc:</label>
-            <input type="number" [ngClass]="{'red-border-class':!produtoForm.controls['qt_max_par'].valid &&produtoForm.controls['qt_max_par'].touched }"
+            <input type="number" min="0" [ngClass]="{'red-border-class':!produtoForm.controls['qt_max_par'].valid &&produtoForm.controls['qt_max_par'].touched }"
                 class="form-control" formControlName="qt_max_par" placeholder="">
         </div>
     </div>

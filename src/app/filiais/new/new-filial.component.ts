@@ -70,7 +70,7 @@ export class NewFilialComponent implements OnInit {
       cc_ins_mun: ["", Validators.required],
       cc_cna_fis: ["", Validators.required],
       cc_reg_tri: ["", Validators.required],
-      st_fil:['AT', null]
+      st_fil:['PD',null]
     });
   }
   enviar() {

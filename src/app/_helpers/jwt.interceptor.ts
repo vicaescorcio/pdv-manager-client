@@ -14,8 +14,7 @@ export class JwtInterceptor implements HttpInterceptor {
                     Authorization: `Bearer ${localStorage.access_token}`
                 }
             });
-        }
- 
+        } 
         return next.handle(request);
     }
 }

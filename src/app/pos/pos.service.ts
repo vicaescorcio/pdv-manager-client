@@ -36,7 +36,7 @@ export class PosService {
     });
   }
   updatePos(pos: Pos) {
-    return this.http.put<Pos>(this.url+ JSON.stringify(pos), {
+    return this.http.put<Pos>(this.url+ pos.cc_num_ser, JSON.stringify(pos), {
       headers: this._config.headers
     });
   }

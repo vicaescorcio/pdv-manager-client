@@ -54,6 +54,7 @@ export class NewEmpregadoComponent implements OnInit {
     });
   }
   ngOnInit(){
+    this.buildFil()
     this.route.params.subscribe(params => {
       this.cc_emp = params["cc_emp"];
       if (this.cc_emp) {
@@ -99,6 +100,7 @@ export class NewEmpregadoComponent implements OnInit {
   }
   setEmpregado(){
     this.empregadoService.getEmpregado(this.cc_emp).subscribe(_page=>{
+      console.log(_page.content[0])
       this.empregado = _page.content[0] 
       this.empregadoForm.patchValue({cc_fil: this.empregado.cc_fil },{ onlySelf: true });
       this.empregadoForm.patchValue({cc_emp:this.empregado.cc_emp.toUpperCase() },{ onlySelf: true });
@@ -109,5 +111,14 @@ export class NewEmpregadoComponent implements OnInit {
       this.empregadoForm.patchValue({dt_ini:this.empregado.dt_ini },{ onlySelf: true }); 
       this.empregadoForm.patchValue({dt_fim:this.empregado.dt_fim.toUpperCase() },{ onlySelf: true }); 
     },_error=>{})
+  }
+
+  buildFil() {
+    return this.filialService.getFiliais(0, 50).subscribe(
+      _page => {
+        this.filiais = _page.content;
+      },
+      error => {}
+    );
   }
 }

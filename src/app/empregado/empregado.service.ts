@@ -25,7 +25,7 @@ export class EmpregadoService {
     });
   }
   getEmpregado(cc_emp: any) {
-    let pesquisa: string = `pesquisa?cc_fil=${cc_emp}`;
+    let pesquisa: string = `pesquisa?cc_emp=${cc_emp}`;
     return this.http.get<Page>(this.url + pesquisa, {
       headers: this._config.headers
     });
@@ -36,7 +36,7 @@ export class EmpregadoService {
     });
   }
   updateEmpregado(empregado: Empregado) {
-    return this.http.put<Empregado>(this.url+ JSON.stringify(empregado), {
+    return this.http.post<Empregado>(this.url+empregado.cc_emp, JSON.stringify(empregado), {
       headers: this._config.headers
     });
   }

@@ -16,7 +16,7 @@ const routes: Routes = [
     canActivate:[CanActivateViaAuthGuard]
   },
   {
-    path: "new-empregado/:cc_emp",
+    path: "edit-empregado/:cc_emp",
     component: NewEmpregadoComponent,
     canActivate:[CanActivateViaAuthGuard]
   }

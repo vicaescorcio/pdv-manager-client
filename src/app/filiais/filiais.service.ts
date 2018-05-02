@@ -45,7 +45,8 @@ export class FiliaisService {
     });
   }
   updateFilial(filial: Filial) {
-    return this.http.put<Filial>(this.url+ JSON.stringify(filial), {
+    console.log(this.url+ JSON.stringify(filial))
+    return this.http.put<Filial>(this.url+filial.cc_fil, JSON.stringify(filial), {
       headers: this._config.headers
     });
   }

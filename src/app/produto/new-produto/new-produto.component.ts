@@ -6,7 +6,6 @@ import { Masks } from "./../../shared/masks";
 import { FormGroup } from "@angular/forms";
 import { Filial } from "./../../filiais/filial";
 import { Produto } from "./../produto";
-import { UpperDirective } from "./../../shared/_directives/upper.directive";
 import { Component, OnInit } from "@angular/core";
 @Component({
   selector: "pdv-new-produto",
@@ -119,6 +118,7 @@ export class NewProdutoComponent implements OnInit {
   }
   setProduto(){
     this.produtoService.getProduto(this.cc_psr).subscribe(_page=>{
+      console.log(_page)
       this.produto = _page.content[0] 
       this.produtoForm.patchValue({cc_fil: this.produto.cc_fil },{ onlySelf: true });
       this.produtoForm.patchValue({cc_psr:this.produto.cc_psr.toUpperCase() },{ onlySelf: true });
@@ -132,12 +132,12 @@ export class NewProdutoComponent implements OnInit {
       this.produtoForm.patchValue({cc_psr_ncm:this.produto.cc_psr_ncm },{ onlySelf: true }); 
       this.produtoForm.patchValue({cc_psr_ces:this.produto.cc_psr_ces.toUpperCase() },{ onlySelf: true });  
       this.produtoForm.patchValue({cc_psr_cst_icm:this.produto.cc_psr_cst_icm },{ onlySelf: true }); 
-      this.produtoForm.patchValue({pc_psr_ali_icm:this.produto.pc_psr_ali_icm },{ onlySelf: true }); 
-      this.produtoForm.patchValue({pc_psr_red_icm:this.produto.pc_psr_red_icm },{ onlySelf: true }); 
+      this.produtoForm.patchValue({pc_psr_ali_icm:this.produto.pc_psr_ali_icm.toString().replace('.',',') },{ onlySelf: true }); 
+      this.produtoForm.patchValue({pc_psr_red_icm:this.produto.pc_psr_red_icm.toString().replace('.',',') },{ onlySelf: true }); 
       this.produtoForm.patchValue({cc_psr_cst_pis:this.produto.cc_psr_cst_pis },{ onlySelf: true }); 
-      this.produtoForm.patchValue({pc_psr_ali_pis:this.produto.pc_psr_ali_pis },{ onlySelf: true }); 
+      this.produtoForm.patchValue({pc_psr_ali_pis:this.produto.pc_psr_ali_pis.toString().replace('.',',') },{ onlySelf: true }); 
       this.produtoForm.patchValue({cc_psr_cst_cof:this.produto.cc_psr_cst_cof },{ onlySelf: true }); 
-      this.produtoForm.patchValue({pc_psr_ali_cof:this.produto.pc_psr_ali_cof },{ onlySelf: true }); 
+      this.produtoForm.patchValue({pc_psr_ali_cof:this.produto.pc_psr_ali_cof.toString().replace('.',',') },{ onlySelf: true }); 
       this.produtoForm.patchValue({cc_psr_gar:this.produto.cc_psr_gar.toUpperCase() },{ onlySelf: true });  
       this.produtoForm.patchValue({cc_psr_sg1:this.produto.cc_psr_sg1 },{ onlySelf: true }); 
       this.produtoForm.patchValue({cc_psr_sg2:this.produto.cc_psr_sg2 },{ onlySelf: true }); 

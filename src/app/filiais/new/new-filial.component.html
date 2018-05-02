@@ -1,5 +1,6 @@
 <h1>Nova Filial</h1>
 <hr>
+
 <div class="alert alert-danger" role="alert" *ngIf="server_error">
   {{server_error}}
   <br />
@@ -10,7 +11,7 @@
     Adicionar outro
   </button>
 </div>
-<form [formGroup]="filialForm" (ngSubmit)="edit? update():enviar()">
+<form *ngIf="sucesso" [formGroup]="filialForm" (ngSubmit)="edit? update():enviar()">
   <div class="form-row">
     <div class="form-group col-md-4">
       <label>Código:</label>

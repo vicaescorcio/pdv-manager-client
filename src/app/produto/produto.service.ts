@@ -25,7 +25,7 @@ export class ProdutoService {
     });
   }
   getProduto(cc_psr: any) {
-    let pesquisa: string = `pesquisa?cc_fil=${cc_psr}`;
+    let pesquisa: string = `pesquisa?cc_psr=${cc_psr}`;
     return this.http.get<Page>(this.url + pesquisa, {
       headers: this._config.headers
     });
@@ -36,7 +36,7 @@ export class ProdutoService {
     });
   }
   updateProduto(produto: Produto) {
-    return this.http.put<Produto>(this.url+ JSON.stringify(produto), {
+    return this.http.put<Produto>(this.url+produto.cc_psr, JSON.stringify(produto), {
       headers: this._config.headers
     });
   }

@@ -40,7 +40,7 @@ export class FinalizadoraService {
     });
   }
   updateFilial(finalizadora: Finalizadora) {
-    return this.http.put<Finalizadora>(this.url+ JSON.stringify(finalizadora), {
+    return this.http.put<Finalizadora>(this.url+finalizadora.cc_fin, JSON.stringify(finalizadora), {
       headers: this._config.headers
     });
   }

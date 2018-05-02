@@ -25,7 +25,7 @@ export class PdvService {
   }
 
   updatePdv(pdv: Pdv) {
-    return this.http.put<Pdv>(this.url+ JSON.stringify(pdv), {
+    return this.http.put<Pdv>(this.url + pdv.cc_pdv, JSON.stringify(pdv), {
       headers: this._config.headers
     });
   }

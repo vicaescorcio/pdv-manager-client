@@ -9,8 +9,6 @@ import { Filial } from './../../filiais/filial';
 import { FormBuilder } from "@angular/forms";
 import { FormGroup } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { UpperDirective } from './../../shared/_directives/upper.directive';
-
 @Component({
   selector: 'pdv-new-finalizadora',
   templateUrl: './new-finalizadora.component.html',

@@ -12,6 +12,7 @@ export class AuthComponent implements OnInit {
   model: any = {};
   loading = false;
   returnUrl: string;
+  error:string;
   constructor(
     private authService: AuthService,
     private router: Router,
@@ -26,11 +27,12 @@ export class AuthComponent implements OnInit {
   login(){
     this.loading = true;
     this.authService.getAuth(this.model.username.trim(), this.model.password.trim()).subscribe(_authResult=>{
-       this.authService.setSession(_authResult)
+      this.authService.setSession(_authResult)
        this.router.navigate([this.returnUrl]);
     },
     error=>{
       console.log(error)
+      this.error = error.message
       this.loading = false;
     })
 
